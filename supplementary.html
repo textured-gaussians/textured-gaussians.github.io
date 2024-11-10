@@ -136,7 +136,7 @@
         <div class="content has-text-justified">
           <ol>
             <li><a href="#introduction">Novel View Synthesis Results with Varying Numbers of Gaussians</a></li>
-            <li><a href="#related-work">Texture Map (alpha-only (A), RGB, and RGBA) Ablations</a></li>
+            <li><a href="#related-work">Texture Map Ablations</a></li>
             <li><a href="#methodology">Color Component Decomposition Visualizations</a></li>
           </ol>
         </div>
@@ -179,9 +179,10 @@
       </div>
 
       <div class="column is-half">
-        <video id="video" width="640" height="480" controls>
-          <source id="video-source" src="" type="video/mp4">
+        <video id="video-vary-gaussians" width="640" height="480" controls>
+          <source id="video-source-vary-gaussians" src="" type="video/mp4">
         </video>
+        <div id="video-name-vary-gaussians"></div>
       </div>
     </div>
 
@@ -208,12 +209,13 @@
       }
 
       function updateColorVaryVideo() {
+        let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
         currentValue = parseInt(document.getElementById('slider').value);
-        let videoName = `${currentScene}_${currentModel}_${currentValue}.mp4`;
-        document.getElementById('video-source').src = `./static/videos/${videoName}`;
-        document.getElementById('video').load();
-        let sliderValues = ['1%', '2%', '5%', '10%', '20%', '50%', '100%'];
-        document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1];
+        let videoName = `${currentScene}_${currentModel}_${sliderValues[currentValue - 1]}.mp4`;
+        document.getElementById('video-source-vary-gaussians').src = `./static/videos/${videoName}`;
+        document.getElementById('video-vary-gaussians').load();
+        document.getElementById('video-name-vary-gaussians').innerHTML = videoName;
+        document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1] + "%";
       }
     </script>
   </div>
@@ -296,7 +298,7 @@
 <!-- Color Decomposition Visualization -->
 <div class="columns is-centered">
   <div class="column is-full-width">
-    <h2 class="title is-3">Color Decomposition Visualization</h2>
+    <h2 class="title is-3">Color Component Decomposition Visualization</h2>
 
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
