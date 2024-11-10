@@ -1,14 +1,14 @@
 # Nerfies
 
-This is the repository that contains source code for the [Nerfies website](https://nerfies.github.io).
+This is the repository that contains the source code for the **Textured Gaussians for Enhanced 3D Appearance Modeling** [website]().
 
-If you find Nerfies useful for your work please cite:
+If you find our paper useful for your work please cite:
 ```
-@article{park2021nerfies
-  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
-  title     = {Nerfies: Deformable Neural Radiance Fields},
-  journal   = {ICCV},
-  year      = {2021},
+@article{xxx2024texturedgaussians,
+  author    = {},
+  title     = {Textured Gaussians for Enhanced 3D Scene Appearance Modeling},
+  journal   = {},
+  year      = {2025},
 }
 ```
 

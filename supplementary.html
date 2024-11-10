@@ -135,9 +135,9 @@
 
         <div class="content has-text-justified">
           <ol>
-            <li><a href="#introduction">Novel View Synthesis Results with Varying Numbers of Gaussians</a></li>
-            <li><a href="#related-work">Texture Map Ablations</a></li>
-            <li><a href="#methodology">Color Component Decomposition Visualizations</a></li>
+            <li><a href="#vary-gaussians">Novel View Synthesis Results with Varying Numbers of Gaussians</a></li>
+            <li><a href="#tex-ablation">Texture Map Ablations</a></li>
+            <li><a href="#color-decomp">Color Component Decomposition Visualizations</a></li>
           </ol>
         </div>
       </div>
@@ -147,7 +147,7 @@
   <!-- Novel View Synthesis Results with Varying Numbers of Gaussians -->
 <div class="columns is-centered">
   <div class="column is-full-width">
-    <h2 class="title is-3">Novel View Synthesis Results with Varying Numbers of Gaussians</h2>
+    <h2 id="vary-gaussians" class="title is-3">Novel View Synthesis Results with Varying Numbers of Gaussians</h2>
 
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
@@ -225,7 +225,7 @@
 <!-- Texture Map Ablations -->
 <div class="columns is-centered">
   <div class="column is-full-width">
-    <h2 class="title is-3">Texture Map Ablations</h2>
+    <h2 id="tex-ablation" class="title is-3">Texture Map Ablations</h2>
 
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
@@ -256,9 +256,10 @@
         </div>
 
       <div class="column is-half">
-        <video id="video" width="640" height="480" controls>
-          <source id="video-source" src="" type="video/mp4">
+        <video id="video-tex-ablation" width="640" height="480" controls>
+          <source id="video-source-tex-ablation" src="" type="video/mp4">
         </video>
+        <div id="video-name-tex-ablation"></div>
       </div>
     </div>
 
@@ -286,8 +287,9 @@
 
       function updateTexAblationVideo() {
         let videoName = `${currentTextureAblationScene}_${currentTexture}.mp4`;
-        document.getElementById('video-source').src = `./static/videos/${videoName}`;
-        document.getElementById('video').load();
+        document.getElementById('video-source-tex-ablation').src = `./static/videos/${videoName}`;
+        document.getElementById('video-tex-ablation').load();
+        document.getElementById('video-name-tex-ablation').innerHTML = videoName;
       }
     </script>
   </div>
@@ -298,7 +300,7 @@
 <!-- Color Decomposition Visualization -->
 <div class="columns is-centered">
   <div class="column is-full-width">
-    <h2 class="title is-3">Color Component Decomposition Visualization</h2>
+    <h2 id="color-decomp" class="title is-3">Color Component Decomposition Visualization</h2>
 
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
@@ -338,9 +340,10 @@
         </div>
 
       <div class="column is-half">
-        <video id="video" width="640" height="480" controls>
-          <source id="video-source" src="" type="video/mp4">
+        <video id="video-color-decomp" width="640" height="480" controls>
+          <source id="video-source-color-decomp" src="" type="video/mp4">
         </video>
+        <div id="video-name-color-decomp"></div>
       </div>
     </div>
 
@@ -376,8 +379,9 @@
 
       function updateColorDecompVideo() {
         let videoName = `${currentTextureAblationScene}_${currentTexture}.mp4`;
-        document.getElementById('video-source').src = `./static/videos/${videoName}`;
-        document.getElementById('video').load();
+        document.getElementById('video-source-color-decomp').src = `./static/videos/${videoName}`;
+        document.getElementById('video-color-decomp').load();
+        document.getElementById('video-name-color-decomp').innerHTML = videoName;
       }
 
     </script>
