@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Augmenting Gaussians with RGBA texture maps greatly improves the expressivity of individual Gaussians.">
+  <meta name="keywords" content="textured Gaussians, Gaussian splatting, novel view synthesis">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Textured Gaussians for Enhanced 3D Appearance Modeling</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="index.html">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Textured Gaussians for Enhanced 3D Appearance Modeling</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Anonymous CVPR 2025 Submission</a>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"></span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Supplementary Materials Link -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Supplementary Materials</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code (Coming Soon)</span>
+                  </a>
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+    <!-- Table of Contents. -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Table of Contents</h2>
+
+        <div class="content has-text-justified">
+          <ol>
+            <li><a href="#introduction">Novel View Synthesis Results with Varying Numbers of Gaussians</a></li>
+            <li><a href="#related-work">Texture Map (alpha-only (A), RGB, and RGBA) Ablations</a></li>
+            <li><a href="#methodology">Color Component Decomposition Visualizations</a></li>
+          </ol>
+        </div>
+      </div>
+    </div>
+    <!--/ Table of Contents -->
+
+  <!-- Novel View Synthesis Results with Varying Numbers of Gaussians -->
+<div class="columns is-centered">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Novel View Synthesis Results with Varying Numbers of Gaussians</h2>
+
+    <div class="columns is-vcentered">
+      <div class="column is-half" style="margin-right: 2rem;">
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="is-fullwidth has-text-centered">
+              Scene
+            </div>
+            <div class="buttons is-vertical">
+              <button id="scene-button-1" class="button is-outlined is-fullwidth is-active" onclick="selectScene('scene1')">Scene 1</button>
+              <button id="scene-button-2" class="button is-outlined is-fullwidth" onclick="selectScene('scene2')">Scene 2</button>
+              <button id="scene-button-3" class="button is-outlined is-fullwidth" onclick="selectScene('scene3')">Scene 3</button>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="is-fullwidth has-text-centered">
+              Model Type
+            </div>
+            <div class="buttons is-vertical">
+              <button id="model-button-3dgs" class="button is-outlined is-fullwidth is-active" onclick="selectModel('3DGS')">3DGS</button>
+              <button id="model-button-ours" class="button is-outlined is-fullwidth" onclick="selectModel('Ours')">Ours</button>
+            </div>
+          </div>
+        </div>
+        <div class="control is-fullwidth">
+          <input type="range" id="slider" min="1" max="7" value="1" step="1" onchange="updateColorVaryVideo()" class="slider is-fullwidth is-large is-info">
+          <div class="is-fullwidth has-text-centered" id="slider-value">Percentage of Gaussians: 1%</div>
+        </div>
+      </div>
+
+      <div class="column is-half">
+        <video id="video" width="640" height="480" controls>
+          <source id="video-source" src="" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+    <script>
+      let currentScene = 'scene1';
+      let currentModel = '3DGS';
+
+      function selectScene(scene) {
+        document.querySelectorAll('#scene-button-1, #scene-button-2, #scene-button-3').forEach(button => button.classList.remove('is-active'));
+        document.getElementById(`scene-button-${scene.replace('scene', '')}`).classList.add('is-active');
+        currentScene = scene;
+        updateColorVaryVideo();
+      }
+
+      function selectModel(model) {
+        document.querySelectorAll('#model-button-3dgs, #model-button-ours').forEach(button => button.classList.remove('is-active'));
+        if (model === '3DGS') {
+          document.getElementById('model-button-3dgs').classList.add('is-active');
+        } else {
+          document.getElementById('model-button-ours').classList.add('is-active');
+        }
+        currentModel = model;
+        updateColorVaryVideo();
+      }
+
+      function updateColorVaryVideo() {
+        currentValue = parseInt(document.getElementById('slider').value);
+        let videoName = `${currentScene}_${currentModel}_${currentValue}.mp4`;
+        document.getElementById('video-source').src = `./static/videos/${videoName}`;
+        document.getElementById('video').load();
+        let sliderValues = ['1%', '2%', '5%', '10%', '20%', '50%', '100%'];
+        document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1];
+      }
+    </script>
+  </div>
+</div>
+<!--/ Novel View Synthesis Results with Varying Numbers of Gaussians -->
+
+<!-- Texture Map Ablations -->
+<div class="columns is-centered">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Texture Map Ablations</h2>
+
+    <div class="columns is-vcentered">
+      <div class="column is-half" style="margin-right: 2rem;">
+        <div class="columns is-multiline">
+          <div class="column is-half">
+            <div class="is-fullwidth has-text-centered">
+              Scene
+            </div>
+            <div class="buttons is-vertical">
+              <button id="scene-tex-ablation-button-1" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('scene1')">Scene 1</button>
+              <button id="scene-tex-ablation-button-2" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('scene2')">Scene 2</button>
+              <button id="scene-tex-ablation-button-3" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('scene3')">Scene 3</button>
+            </div>
+          </div>
+          <div class="column is-half">
+            <div class="is-fullwidth has-text-centered">
+              Texture map variants
+            </div>
+            <div class="buttons is-vertical">
+              <button id="texture-button-none" class="button is-outlined is-fullwidth is-active" onclick="selectTexture('none')">None</button>
+              <button id="texture-button-alpha" class="button is-outlined is-fullwidth" onclick="selectTexture('alpha')">Alpha</button>
+              <button id="texture-button-rgb" class="button is-outlined is-fullwidth" onclick="selectTexture('rgb')">RGB</button>
+              <button id="texture-button-rgba" class="button is-outlined is-fullwidth" onclick="selectTexture('rgba')">RGBA</button>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+      <div class="column is-half">
+        <video id="video" width="640" height="480" controls>
+          <source id="video-source" src="" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+
+    <script>
+      let currentTextureAblationScene = 'scene1';
+      let currentTexture = 'none';
+
+
+      function selectTexAblationScene(scene) {
+        document.querySelectorAll('#scene-tex-ablation-button-1, #scene-tex-ablation-button-2, #scene-tex-ablation-button-3').forEach(button => button.classList.remove('is-active'));
+        document.getElementById(`scene-tex-ablation-button-${scene.replace('scene', '')}`).classList.add('is-active');
+        currentTextureAblationScene = scene;
+        updateTexAblationVideo();
+      }
+
+
+      function selectTexture(texture) {
+        document.querySelectorAll('#texture-button-none, #texture-button-alpha, #texture-button-rgb, #texture-button-rgba').forEach(button => button.classList.remove('is-active'));
+        document.getElementById(`texture-button-${texture}`).classList.add('is-active');
+        currentTexture = texture;
+        updateTexAblationVideo();
+      }
+
+
+      function updateTexAblationVideo() {
+        let videoName = `${currentTextureAblationScene}_${currentTexture}.mp4`;
+        document.getElementById('video-source').src = `./static/videos/${videoName}`;
+        document.getElementById('video').load();
+      }
+    </script>
+  </div>
+</div>
+<!--/ Texture Map Ablations -->
+
+
+<!-- Color Decomposition Visualization -->
+<div class="columns is-centered">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Color Decomposition Visualization</h2>
+
+    <div class="columns is-vcentered">
+      <div class="column is-half" style="margin-right: 2rem;">
+        <div class="columns is-multiline">
+          <div class="column is-one-third">
+            <div class="is-fullwidth has-text-centered">
+              Scene
+            </div>
+            <div class="buttons is-vertical">
+              <button id="scene-decomp-button-1" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('scene1')">Scene 1</button>
+              <button id="scene-decomp-button-2" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('scene2')">Scene 2</button>
+              <button id="scene-decomp-button-3" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('scene3')">Scene 3</button>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="is-fullwidth has-text-centered">
+              Texture map variants
+            </div>
+            <div class="buttons is-vertical">
+              <button id="decomp-tex-button-none" class="button is-outlined is-fullwidth is-active" onclick="selectTexDecomp('none')">None</button>
+              <button id="decomp-tex-button-alpha" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('alpha')">Alpha</button>
+              <button id="decomp-tex-button-rgb" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgb')">RGB</button>
+              <button id="decomp-tex-button-rgba" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgba')">RGBA</button>
+            </div>
+          </div>
+          <div class="column is-one-third">
+            <div class="is-fullwidth has-text-centered">
+              Color Component
+            </div>
+            <div class="buttons is-vertical">
+              <button id="decomp-color-button-base" class="button is-outlined is-fullwidth is-active" onclick="selectColorDecomp('base')">Base</button>
+              <button id="decomp-color-button-tex" class="button is-outlined is-fullwidth" onclick="selectColorDecomp('tex')">Texture</button>
+            </div>
+          </div>
+        </div>
+
+        </div>
+
+      <div class="column is-half">
+        <video id="video" width="640" height="480" controls>
+          <source id="video-source" src="" type="video/mp4">
+        </video>
+      </div>
+    </div>
+
+
+    <script>
+      let currentSceneDecomp = 'scene1';
+      let currenTexDecomp = 'none';
+      let currentColorDecomp = 'base';
+
+
+      function selectSceneDecomp(scene) {
+        document.querySelectorAll('#scene-decomp-button-1, #scene-decomp-button-2, #scene-decomp-button-3').forEach(button => button.classList.remove('is-active'));
+        document.getElementById(`scene-decomp-button-${scene.replace('scene', '')}`).classList.add('is-active');
+        currentSceneDecomp = scene;
+        updateColorDecompVideo();
+      }
+
+
+      function selectTexDecomp(texture) {
+        document.querySelectorAll('#decomp-tex-button-none, #decomp-tex-button-alpha, #decomp-tex-button-rgb, #decomp-tex-button-rgba').forEach(button => button.classList.remove('is-active'));
+        document.getElementById(`decomp-tex-button-${texture}`).classList.add('is-active');
+        currentTexDecomp = texture;
+        updateColorDecompVideo();
+      }
+
+      function selectColorDecomp(color) {
+        document.querySelectorAll('#decomp-color-button-base, #decomp-color-button-tex').forEach(button => button.classList.remove('is-active'));
+        document.getElementById(`decomp-color-button-${color}`).classList.add('is-active');
+        currentColorDecomp = color;
+        updateColorDecompVideo();
+      }
+
+
+      function updateColorDecompVideo() {
+        let videoName = `${currentTextureAblationScene}_${currentTexture}.mp4`;
+        document.getElementById('video-source').src = `./static/videos/${videoName}`;
+        document.getElementById('video').load();
+      }
+
+    </script>
+  </div>
+</div>
+<!--/ Color Decomposition Visualization -->
+
+</section>
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{xxx2024texturedgaussians,
+  author    = {},
+  title     = {Textured Gaussians for Enhanced 3D Scene Appearance Modeling},
+  journal   = {},
+  year      = {2025},
+}</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link"
+         href="">
+        <i class="fas fa-file-pdf"></i>
+      </a>
+      <a class="icon-link" href="" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This means you are free to borrow the <a
+              href="https://github.com/nerfies/nerfies.github.io">source code</a> of this website,
+            we just ask that you link back to this page in the footer.
+            Please remember to remove the analytics code included in the header of the website which
+            you do not want on your website.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

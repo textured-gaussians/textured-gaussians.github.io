@@ -1,3 +1,16 @@
+.button.is-active {
+  background-color: #3273dc;
+  color: #fff;
+  border-color: #3273dc;
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.button:focus, .button:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
 body {
   font-family: 'Noto Sans', sans-serif;
 }
