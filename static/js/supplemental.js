@@ -20,7 +20,7 @@ window.onload = function() {
 // Varying number of Gaussians
 
 function selectScene(scene) {
-  document.querySelectorAll('#scene-button-mipnerf360-kitchen, #scene-button-mipnerf360-bicycle, #scene-button-mipnerf360-stump').forEach(button => button.classList.remove('is-active'));
+  document.querySelectorAll('#scene-button-mipnerf360-kitchen, #scene-button-mipnerf360-bicycle, #scene-button-mipnerf360-stump, #scene-button-custom-flower_gallery, #scene-button-custom-children_art').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-button-${scene}`).classList.add('is-active');
   currentScene = scene;
   updateColorVaryVideo();
@@ -45,7 +45,7 @@ function updateColorVaryVideo() {
   currentTimeVaryGaussians = document.getElementById('video-vary-gaussians').currentTime;
   document.getElementById('video-vary-gaussians').load();
   document.getElementById('video-vary-gaussians').currentTime = currentTimeVaryGaussians;
-  document.getElementById('video-name-vary-gaussians').innerHTML = videoName;
+  //document.getElementById('video-name-vary-gaussians').innerHTML = videoName;
   document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1] + "%";
 }
 
@@ -73,7 +73,7 @@ function updateTexAblationVideo() {
   document.getElementById('video-source-tex-ablation').src = `./static/videos/tex_ablation/${videoName}`;
   document.getElementById('video-tex-ablation').load();
   document.getElementById('video-tex-ablation').currentTime = currentTimeTextureAblation;
-  document.getElementById('video-name-tex-ablation').innerHTML = videoName;
+  //document.getElementById('video-name-tex-ablation').innerHTML = videoName;
 }
 
 
@@ -108,5 +108,5 @@ function updateColorDecompVideo() {
   document.getElementById('video-source-color-decomp').src = `./static/videos/color_decomp/${videoName}`;
   document.getElementById('video-color-decomp').load();
   document.getElementById('video-color-decomp').currentTime = currentTimeColorDecomp;
-  document.getElementById('video-name-color-decomp').innerHTML = videoName;
+  //document.getElementById('video-name-color-decomp').innerHTML = videoName;
 }

@@ -148,7 +148,18 @@
 <div class="columns is-centered">
   <div class="column is-full-width">
     <h2 id="vary-gaussians" class="title is-3">Novel-View Synthesis Results with Varying Numbers of Gaussians</h2>
-
+    <div class="content has-text-justified">
+      <p>
+        We optimize 3DGS and our RGBA Textured Gaussians models with varying numbers of Gaussians, ranging from 1% of
+        the default optimized number to 100% of the default optimized number of Gaussians. When toggling between <b>3DGS</b>
+        and <b>Ours</b> while using the same number of Gaussians, our method clearly reconstructs sharper details and is
+        most evident with fewer Gaussians.
+      </p>
+      <p>
+        When varying the number of Gaussians using the slider, we see that recontruction performance improves as the number of
+        Gaussians increase, as expected.
+      </p>
+    </div>
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
         <div class="columns is-multiline">
@@ -160,6 +171,8 @@
               <button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
               <button id="scene-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
               <button id="scene-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
+              <button id="scene-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
+              <button id="scene-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectScene('custom-children_art')">Children Art (Custom)</button>
             </div>
           </div>
           <div class="column is-half">
@@ -179,7 +192,7 @@
       </div>
 
       <div class="column is-half">
-        <video id="video-vary-gaussians" width="640" height="480" controls>
+        <video controls muted loop playsinline preload="auto" id="video-vary-gaussians" width="640" height="480">
           <source id="video-source-vary-gaussians" src="static/videos/num_gs/mipnerf360-kitchen_3DGS_1.mp4" type="video/mp4">
         </video>
         <div id="video-name-vary-gaussians"></div>
@@ -193,7 +206,19 @@
 <div class="columns is-centered">
   <div class="column is-full-width">
     <h2 id="tex-ablation" class="title is-3">Texture Map Ablations</h2>
-
+    <div class="content has-text-justified">
+      <p>
+        We optimized our Textured Gaussians model using alpha (A), RGB, and RGBA texture maps with 1% of the default optimized
+        Gaussians to maximize the visual difference between different variants. We observe that the reconstruction quality is
+        already significantly improved compared to 3DGS when using alpha textures only. Using full RGBA textures achieves the
+        best results.
+      </p>
+      <p>
+        Interestingly, alpha textures achieves better results than RGB textures specifically in regions with detailed geometric
+        structures, such as the pipes in the lego truck. This is because Gaussians with RGB textures can still only represent
+        ellipsoidal shapes. On the other hand, alpha-textured Gaussians can represent complex shapes due to the spatially varying opacity.
+      </p>
+    </div>
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
         <div class="columns is-multiline">
@@ -223,7 +248,7 @@
         </div>
 
       <div class="column is-half">
-        <video id="video-tex-ablation" width="640" height="480" controls>
+        <video controls muted loop playsinline preload="auto" id="video-tex-ablation" width="640" height="480">
           <source id="video-source-tex-ablation" src="static/videos/tex_ablation/mipnerf360-kitchen_none.mp4" type="video/mp4">
         </video>
         <div id="video-name-tex-ablation"></div>
@@ -238,7 +263,21 @@
 <div class="columns is-centered">
   <div class="column is-full-width">
     <h2 id="color-decomp" class="title is-3">Color Component Decomposition Visualization</h2>
-
+    <div class="content has-text-justified">
+      <p>
+        We optimized our Textured Gaussians model with alpha (A), RGB, and RGBA texture maps with 1% of the default number of
+        optimized Gaussians, and visualize the <i>alpha modulated and composited</i> base and texture color components.
+      </p>
+      <p>
+        With alpha textures, we see from results of the alpha-only and RGBA textures model that high-frequency
+        details can already be recosntructed well with the base color component due to spatially varying alpha modulation and composition.
+        With RGB textures, the base color component can only reconstruct low-frequency color variations while the texture
+        map color components reconstructs the "residual" details.
+      </p>
+    </div>
+    <div class="content has-text-centered">
+      <img src="./static/images/color_contribution_table.svg" style="width: 100%;"/>
+    </div>
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
         <div class="columns is-multiline">
@@ -277,7 +316,7 @@
         </div>
 
       <div class="column is-half">
-        <video id="video-color-decomp" width="640" height="480" controls>
+        <video controls muted loop playsinline preload="auto" id="video-color-decomp" width="640" height="480">
           <source id="video-source-color-decomp" src="static/videos/color_decomp/mipnerf360-kitchen_none_base.mp4" type="video/mp4">
         </video>
         <div id="video-name-color-decomp"></div>
