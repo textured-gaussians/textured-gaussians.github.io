@@ -6,7 +6,7 @@
         content="Augmenting Gaussians with RGBA texture maps greatly improves the expressivity of individual Gaussians.">
   <meta name="keywords" content="textured Gaussians, Gaussian splatting, novel view synthesis">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Textured Gaussians for Enhanced 3D Appearance Modeling: Supplemental Materials</title>
+  <title>Textured Gaussians for Enhanced 3D Scene Appearance Modeling: Supplemental Materials</title>
 
   <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
         rel="stylesheet">
@@ -24,7 +24,7 @@
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
-  <script src="./static/js/index.js"></script>
+  <script src="./static/js/supplemental.js"></script>
 </head>
 <body>
 
@@ -54,7 +54,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Textured Gaussians for Enhanced 3D Appearance Modeling <br><i style="font-weight: normal;">Supplemental Materials</i></h1>
+          <h1 class="title is-1 publication-title">Textured Gaussians for Enhanced 3D Scene Appearance Modeling <br><i style="font-weight: normal;">Supplemental Materials</i></h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="">Anonymous CVPR 2025 Submission</a>
@@ -135,7 +135,7 @@
 
         <div class="content has-text-justified">
           <ol>
-            <li><a href="#vary-gaussians">Novel View Synthesis Results with Varying Numbers of Gaussians</a></li>
+            <li><a href="#vary-gaussians">Novel-View Synthesis Results with Varying Numbers of Gaussians</a></li>
             <li><a href="#tex-ablation">Texture Map Ablations</a></li>
             <li><a href="#color-decomp">Color Component Decomposition Visualizations</a></li>
           </ol>
@@ -147,7 +147,7 @@
   <!-- Novel View Synthesis Results with Varying Numbers of Gaussians -->
 <div class="columns is-centered">
   <div class="column is-full-width">
-    <h2 id="vary-gaussians" class="title is-3">Novel View Synthesis Results with Varying Numbers of Gaussians</h2>
+    <h2 id="vary-gaussians" class="title is-3">Novel-View Synthesis Results with Varying Numbers of Gaussians</h2>
 
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
@@ -157,9 +157,9 @@
               Scene
             </div>
             <div class="buttons is-vertical">
-              <button id="scene-button-1" class="button is-outlined is-fullwidth is-active" onclick="selectScene('scene1')">Scene 1</button>
-              <button id="scene-button-2" class="button is-outlined is-fullwidth" onclick="selectScene('scene2')">Scene 2</button>
-              <button id="scene-button-3" class="button is-outlined is-fullwidth" onclick="selectScene('scene3')">Scene 3</button>
+              <button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+              <button id="scene-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
+              <button id="scene-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
             </div>
           </div>
           <div class="column is-half">
@@ -180,44 +180,11 @@
 
       <div class="column is-half">
         <video id="video-vary-gaussians" width="640" height="480" controls>
-          <source id="video-source-vary-gaussians" src="" type="video/mp4">
+          <source id="video-source-vary-gaussians" src="static/videos/num_gs/mipnerf360-kitchen_3DGS_1.mp4" type="video/mp4">
         </video>
         <div id="video-name-vary-gaussians"></div>
       </div>
     </div>
-
-    <script>
-      let currentScene = 'scene1';
-      let currentModel = '3DGS';
-
-      function selectScene(scene) {
-        document.querySelectorAll('#scene-button-1, #scene-button-2, #scene-button-3').forEach(button => button.classList.remove('is-active'));
-        document.getElementById(`scene-button-${scene.replace('scene', '')}`).classList.add('is-active');
-        currentScene = scene;
-        updateColorVaryVideo();
-      }
-
-      function selectModel(model) {
-        document.querySelectorAll('#model-button-3dgs, #model-button-ours').forEach(button => button.classList.remove('is-active'));
-        if (model === '3DGS') {
-          document.getElementById('model-button-3dgs').classList.add('is-active');
-        } else {
-          document.getElementById('model-button-ours').classList.add('is-active');
-        }
-        currentModel = model;
-        updateColorVaryVideo();
-      }
-
-      function updateColorVaryVideo() {
-        let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
-        currentValue = parseInt(document.getElementById('slider').value);
-        let videoName = `${currentScene}_${currentModel}_${sliderValues[currentValue - 1]}.mp4`;
-        document.getElementById('video-source-vary-gaussians').src = `./static/videos/${videoName}`;
-        document.getElementById('video-vary-gaussians').load();
-        document.getElementById('video-name-vary-gaussians').innerHTML = videoName;
-        document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1] + "%";
-      }
-    </script>
   </div>
 </div>
 <!--/ Novel View Synthesis Results with Varying Numbers of Gaussians -->
@@ -235,9 +202,9 @@
               Scene
             </div>
             <div class="buttons is-vertical">
-              <button id="scene-tex-ablation-button-1" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('scene1')">Scene 1</button>
-              <button id="scene-tex-ablation-button-2" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('scene2')">Scene 2</button>
-              <button id="scene-tex-ablation-button-3" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('scene3')">Scene 3</button>
+              <button id="scene-tex-ablation-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+              <button id="scene-tex-ablation-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
+              <button id="scene-tex-ablation-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
             </div>
           </div>
           <div class="column is-half">
@@ -257,41 +224,11 @@
 
       <div class="column is-half">
         <video id="video-tex-ablation" width="640" height="480" controls>
-          <source id="video-source-tex-ablation" src="" type="video/mp4">
+          <source id="video-source-tex-ablation" src="static/videos/tex_ablation/mipnerf360-kitchen_none.mp4" type="video/mp4">
         </video>
         <div id="video-name-tex-ablation"></div>
       </div>
     </div>
-
-
-    <script>
-      let currentTextureAblationScene = 'scene1';
-      let currentTexture = 'none';
-
-
-      function selectTexAblationScene(scene) {
-        document.querySelectorAll('#scene-tex-ablation-button-1, #scene-tex-ablation-button-2, #scene-tex-ablation-button-3').forEach(button => button.classList.remove('is-active'));
-        document.getElementById(`scene-tex-ablation-button-${scene.replace('scene', '')}`).classList.add('is-active');
-        currentTextureAblationScene = scene;
-        updateTexAblationVideo();
-      }
-
-
-      function selectTexture(texture) {
-        document.querySelectorAll('#texture-button-none, #texture-button-alpha, #texture-button-rgb, #texture-button-rgba').forEach(button => button.classList.remove('is-active'));
-        document.getElementById(`texture-button-${texture}`).classList.add('is-active');
-        currentTexture = texture;
-        updateTexAblationVideo();
-      }
-
-
-      function updateTexAblationVideo() {
-        let videoName = `${currentTextureAblationScene}_${currentTexture}.mp4`;
-        document.getElementById('video-source-tex-ablation').src = `./static/videos/${videoName}`;
-        document.getElementById('video-tex-ablation').load();
-        document.getElementById('video-name-tex-ablation').innerHTML = videoName;
-      }
-    </script>
   </div>
 </div>
 <!--/ Texture Map Ablations -->
@@ -310,9 +247,9 @@
               Scene
             </div>
             <div class="buttons is-vertical">
-              <button id="scene-decomp-button-1" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('scene1')">Scene 1</button>
-              <button id="scene-decomp-button-2" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('scene2')">Scene 2</button>
-              <button id="scene-decomp-button-3" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('scene3')">Scene 3</button>
+              <button id="scene-decomp-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+              <button id="scene-decomp-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
+              <button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
             </div>
           </div>
           <div class="column is-one-third">
@@ -341,50 +278,12 @@
 
       <div class="column is-half">
         <video id="video-color-decomp" width="640" height="480" controls>
-          <source id="video-source-color-decomp" src="" type="video/mp4">
+          <source id="video-source-color-decomp" src="static/videos/color_decomp/mipnerf360-kitchen_none_base.mp4" type="video/mp4">
         </video>
         <div id="video-name-color-decomp"></div>
       </div>
     </div>
 
-
-    <script>
-      let currentSceneDecomp = 'scene1';
-      let currenTexDecomp = 'none';
-      let currentColorDecomp = 'base';
-
-
-      function selectSceneDecomp(scene) {
-        document.querySelectorAll('#scene-decomp-button-1, #scene-decomp-button-2, #scene-decomp-button-3').forEach(button => button.classList.remove('is-active'));
-        document.getElementById(`scene-decomp-button-${scene.replace('scene', '')}`).classList.add('is-active');
-        currentSceneDecomp = scene;
-        updateColorDecompVideo();
-      }
-
-
-      function selectTexDecomp(texture) {
-        document.querySelectorAll('#decomp-tex-button-none, #decomp-tex-button-alpha, #decomp-tex-button-rgb, #decomp-tex-button-rgba').forEach(button => button.classList.remove('is-active'));
-        document.getElementById(`decomp-tex-button-${texture}`).classList.add('is-active');
-        currentTexDecomp = texture;
-        updateColorDecompVideo();
-      }
-
-      function selectColorDecomp(color) {
-        document.querySelectorAll('#decomp-color-button-base, #decomp-color-button-tex').forEach(button => button.classList.remove('is-active'));
-        document.getElementById(`decomp-color-button-${color}`).classList.add('is-active');
-        currentColorDecomp = color;
-        updateColorDecompVideo();
-      }
-
-
-      function updateColorDecompVideo() {
-        let videoName = `${currentTextureAblationScene}_${currentTexture}.mp4`;
-        document.getElementById('video-source-color-decomp').src = `./static/videos/${videoName}`;
-        document.getElementById('video-color-decomp').load();
-        document.getElementById('video-name-color-decomp').innerHTML = videoName;
-      }
-
-    </script>
   </div>
 </div>
 <!--/ Color Decomposition Visualization -->
