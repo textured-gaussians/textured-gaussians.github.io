@@ -132,10 +132,17 @@
     <div class="columns is-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Table of Contents</h2>
-
+        <div class="content has-text-justified">
+          <p>
+            In this supplemental website, we show novel-view synthesis (NVS) <b>video</b> results of extensive experiments
+            and ablation studies conducted on the five standard benchmark datasets and our custom-captured dataset.
+          </p>
+        </div>
         <div class="content has-text-justified">
           <ol>
-            <li><a href="#vary-gaussians">Novel-View Synthesis Results with Varying Numbers of Gaussians</a></li>
+            <li><a href="#vary-gaussians-fixed-texels">NVS Results with Varying Numbers of Gaussians and Fixed Amount of Texels</a></li>
+            <li><a href="#vary-gaussians-fixed-tex-res">NVS Results with Varying Numbers of Gaussians and Fixed Texture Map Resolution</a></li>
+            <li><a href="#vary-gaussians-fixed-tex-res">NVS Results with Varying Texture Map Resolutions and Fixed Number of Gaussians</a></li>
             <li><a href="#tex-ablation">Texture Map Ablations</a></li>
             <li><a href="#color-decomp">Color Component Decomposition Visualizations</a></li>
           </ol>
@@ -147,16 +154,17 @@
   <!-- Novel View Synthesis Results with Varying Numbers of Gaussians -->
 <div class="columns is-centered">
   <div class="column is-full-width">
-    <h2 id="vary-gaussians" class="title is-3">Novel-View Synthesis Results with Varying Numbers of Gaussians</h2>
+    <h2 id="vary-gaussians-fixed-texels" class="title is-3">NVS Results with Varying Numbers of Gaussians and Fixed Amount of Texels</h2>
     <div class="content has-text-justified">
       <p>
         We optimize 3DGS and our RGBA Textured Gaussians models with varying numbers of Gaussians, ranging from 1% of
-        the default optimized number to 100% of the default optimized number of Gaussians. When toggling between <b>3DGS</b>
-        and <b>Ours</b> while using the same number of Gaussians, our method clearly reconstructs sharper details and is
-        most evident with fewer Gaussians.
+        the default optimized number to 100% of the default optimized number of Gaussians. <b>We allocate a fixed amount of
+        texels to each model. Hence, the texture map resolution of models with more Gaussians will be smaller.</b>
       </p>
       <p>
-        When varying the number of Gaussians using the slider, we see that recontruction performance improves as the number of
+        When toggling between <b>3DGS</b> and <b>Ours</b> while using the same number of Gaussians,
+        our method clearly reconstructs sharper details and is
+        most evident with fewer Gaussians.When varying the number of Gaussians using the slider, we see that recontruction performance improves as the number of
         Gaussians increase, as expected.
       </p>
     </div>
