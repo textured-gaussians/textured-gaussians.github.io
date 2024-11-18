@@ -11,6 +11,14 @@ let currentTexDecomp = 'none';
 let currentColorDecomp = 'base';
 let currentTimeColorDecomp = 0;
 
+let currentSceneVaryNumGSFixTexRes = 'mipnerf360-kitchen';
+let currentValueVaryNumGSFixTexRes = 1;
+let currentTimeVaryNumGSFixTexRes = 0;
+
+let currentSceneVaryTexResFixNumGS = 'mipnerf360-kitchen';
+let currentValueVaryTexResFixNumGS = 1;
+let currentTimeVaryTexResFixNumGS = 0;
+
 window.onload = function() {
     currentTimeVaryGaussians = document.getElementById('video-vary-gaussians').currentTime;
     currentTimeTextureAblation = document.getElementById('video-tex-ablation').currentTime;
@@ -49,6 +57,46 @@ function updateColorVaryVideo() {
   document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1] + "%";
 }
 
+
+// Vary Number of Gaussians with Fixed Texture Resolution
+function selectVaryNumGSFixTexResScene(scene) {
+  document.querySelectorAll('#scene-vary-num-gs-fix-tex-res-button-mipnerf360-kitchen, #scene-vary-num-gs-fix-tex-res-button-mipnerf360-bicycle, #scene-vary-num-gs-fix-tex-res-button-mipnerf360-stump, #scene-vary-num-gs-fix-tex-res-button-custom-flower_gallery, #scene-vary-num-gs-fix-tex-res-button-custom-children_art').forEach(button => button.classList.remove('is-active'));
+  document.getElementById(`scene-vary-num-gs-fix-tex-res-button-${scene}`).classList.add('is-active');
+  currentSceneVaryNumGSFixTexRes = scene;
+  updateVaryNumGSFixTexResVideo();
+}
+
+function updateVaryNumGSFixTexResVideo() {
+  let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
+  currentValueVaryNumGSFixTexRes = parseInt(document.getElementById('vary-num-gs-fix-tex-res-slider').value);
+  let videoName = `${currentSceneVaryNumGSFixTexRes}_${sliderValues[currentValueVaryNumGSFixTexRes - 1]}.mp4`;
+  document.getElementById('video-source-vary-num-gs-fix-tex-res').src = `./static/videos/fix_tex_res_vary_num_gs/${videoName}`;
+  currentTimeVaryNumGSFixTexRes = document.getElementById('video-vary-num-gs-fix-tex-res').currentTime;
+  document.getElementById('video-vary-num-gs-fix-tex-res').load();
+  document.getElementById('video-vary-num-gs-fix-tex-res').currentTime = currentTimeVaryNumGSFixTexRes;
+  //document.getElementById('video-name-vary-gaussians').innerHTML = videoName;
+  document.getElementById('vary-num-gs-fix-tex-res-slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValueVaryNumGSFixTexRes - 1] + "%";
+}
+
+// Vary Number of Gaussians with Fixed Texture Resolution
+function selectVaryTexResFixNumGSScene(scene) {
+  document.querySelectorAll('#scene-vary-tex-res-fix-num-gs-button-mipnerf360-kitchen, #scene-vary-tex-res-fix-num-gs-button-mipnerf360-bicycle, #scene-vary-tex-res-fix-num-gs-button-mipnerf360-stump, #scene-vary-tex-res-fix-num-gs-button-custom-flower_gallery, #scene-vary-tex-res-fix-num-gs-button-custom-children_art').forEach(button => button.classList.remove('is-active'));
+  document.getElementById(`scene-vary-tex-res-fix-num-gs-button-${scene}`).classList.add('is-active');
+  currentSceneVaryTexResFixNumGS = scene;
+  updateVaryTexResFixNumGSVideo();
+}
+
+function updateVaryTexResFixNumGSVideo() {
+  let sliderValues = [2, 5, 10, 20, 30, 40];
+  currentValueVaryTexResFixNumGS = parseInt(document.getElementById('vary-tex-res-fix-num-gs-slider').value);
+  let videoName = `${currentSceneVaryTexResFixNumGS}_${sliderValues[currentValueVaryTexResFixNumGS - 1]}.mp4`;
+  document.getElementById('video-source-vary-tex-res-fix-num-gs').src = `./static/videos/fix_num_gs_vary_tex_res/${videoName}`;
+  currentTimeVaryTexResFixNumGS = document.getElementById('video-vary-tex-res-fix-num-gs').currentTime;
+  document.getElementById('video-vary-tex-res-fix-num-gs').load();
+  document.getElementById('video-vary-tex-res-fix-num-gs').currentTime = currentTimeVaryTexResFixNumGS;
+  //document.getElementById('video-name-vary-gaussians').innerHTML = videoName;
+  document.getElementById('vary-tex-res-fix-num-gs-slider-value').innerHTML = "Texture Map Resolution: " + sliderValues[currentValueVaryTexResFixNumGS - 1];
+}
 
 // Texture map ablation
 function selectTexAblationScene(scene) {

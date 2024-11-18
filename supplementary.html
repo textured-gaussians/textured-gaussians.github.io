@@ -229,16 +229,16 @@
                 Scene
               </div>
               <div class="buttons is-vertical">
-                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
-                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
-                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
-                <button id="scene-vary-num-gs-fix-tex-res-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
-                <button id="scene-vary-num-gs-fix-tex-res-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectScene('custom-children_art')">Children Art (Custom)</button>
+                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectVaryNumGSFixTexResScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectVaryNumGSFixTexResScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
+                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectVaryNumGSFixTexResScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
+                <button id="scene-vary-num-gs-fix-tex-res-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectVaryNumGSFixTexResScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
+                <button id="scene-vary-num-gs-fix-tex-res-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectVaryNumGSFixTexResScene('custom-children_art')">Children Art (Custom)</button>
               </div>
             </div>
           </div>
           <div class="control is-fullwidth">
-            <input type="range" id="vary-num-gs-fix-tex-res-slider" min="1" max="7" value="1" step="1" onchange="" class="slider is-fullwidth is-large is-info">
+            <input type="range" id="vary-num-gs-fix-tex-res-slider" min="1" max="7" value="1" step="1" onchange="updateVaryNumGSFixTexResVideo()" class="slider is-fullwidth is-large is-info">
             <div class="is-fullwidth has-text-centered" id="vary-num-gs-fix-tex-res-slider-value">Percentage of Gaussians: 1%</div>
           </div>
         </div>
@@ -255,7 +255,7 @@
   <!--/ Novel View Synthesis Results - Vary Num GS Fixed Tex Res -->
 
 
-  <!--/ Novel View Synthesis Results - Vary Num GS Fixed Tex Res -->
+  <!--/ Novel View Synthesis Results - Vary Tex Res Fixed Num GS -->
   <div class="columns is-centered">
     <div class="column is-full-width">
       <h2 id="vary-tex-res-fix-num-gs" class="title is-3">NVS Results with Varying Texture Map Resolution and Fixed Number of Gaussians</h2>
@@ -272,16 +272,16 @@
                 Scene
               </div>
               <div class="buttons is-vertical">
-                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
-                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
-                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
-                <button id="scene-vary-tex-res-fix-num-gs-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
-                <button id="scene-vary-tex-res-fix-num-gs-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectScene('custom-children_art')">Children Art (Custom)</button>
+                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectVaryTexResFixNumGSScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectVaryTexResFixNumGSScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
+                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectVaryTexResFixNumGSScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
+                <button id="scene-vary-tex-res-fix-num-gs-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectVaryTexResFixNumGSScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
+                <button id="scene-vary-tex-res-fix-num-gs-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectVaryTexResFixNumGSScene('custom-children_art')">Children Art (Custom)</button>
               </div>
             </div>
           </div>
           <div class="control is-fullwidth">
-            <input type="range" id="vary-tex-res-fix-num-gs-slider" min="1" max="7" value="1" step="1" onchange="" class="slider is-fullwidth is-large is-info">
+            <input type="range" id="vary-tex-res-fix-num-gs-slider" min="1" max="6" value="1" step="1" onchange="updateVaryTexResFixNumGSVideo()" class="slider is-fullwidth is-large is-info">
             <div class="is-fullwidth has-text-centered" id="vary-tex-res-fix-num-gs-slider-value">Texture Map Resolution: 2</div>
           </div>
         </div>
@@ -295,7 +295,7 @@
       </div>
     </div>
   </div>
-  <!--/ Novel View Synthesis Results - Vary Num GS Fixed Tex Res -->
+  <!--/ Novel View Synthesis Results - Vary Tex Res Fixed Num GS -->
 
 <!-- Texture Map Ablations -->
 <div class="columns is-centered">
