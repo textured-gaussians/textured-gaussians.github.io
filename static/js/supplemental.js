@@ -52,7 +52,7 @@ function updateColorVaryVideo() {
 
 // Texture map ablation
 function selectTexAblationScene(scene) {
-  document.querySelectorAll('#scene-tex-ablation-button-mipnerf360-kitchen, #scene-tex-ablation-button-mipnerf360-bicycle, #scene-tex-ablation-button-mipnerf360-stump').forEach(button => button.classList.remove('is-active'));
+  document.querySelectorAll('#scene-tex-ablation-button-mipnerf360-kitchen, #scene-tex-ablation-button-mipnerf360-bicycle, #scene-tex-ablation-button-mipnerf360-stump, #scene-tex-ablation-button-custom-flower_gallery, #scene-tex-ablation-button-custom-children_art').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-tex-ablation-button-${scene}`).classList.add('is-active');
   currentTextureAblationScene = scene;
   updateTexAblationVideo();
@@ -79,7 +79,7 @@ function updateTexAblationVideo() {
 
 // Color component decomposition
 function selectSceneDecomp(scene) {
-  document.querySelectorAll('#scene-decomp-button-mipnerf360-kitchen, #scene-decomp-button-mipnerf360-bicycle, #scene-decomp-button-mipnerf360-stump').forEach(button => button.classList.remove('is-active'));
+  document.querySelectorAll('#scene-decomp-button-mipnerf360-kitchen, #scene-decomp-button-mipnerf360-bicycle, #scene-decomp-button-mipnerf360-stump, #scene-decomp-button-custom-flower_gallery, #scene-decomp-button-custom-children_art').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-decomp-button-${scene}`).classList.add('is-active');
   currentSceneDecomp = scene;
   updateColorDecompVideo();
