@@ -85,16 +85,16 @@ $(document).ready(function() {
 
     // Pause videos on hover
     videoContainer.addEventListener("mouseenter", () => {
+      syncVideos();
       video1.pause();
       video2.pause();
-      syncVideos();
     });
 
     // Resume videos on leave
     videoContainer.addEventListener("mouseleave", () => {
+      syncVideos();
       video1.play();
       video2.play();
-      syncVideos();
     });
 
 
@@ -127,14 +127,19 @@ $(document).ready(function() {
       video2Wrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
       slider.style.left = `${percentage}%`;
 
-      // Adjust label visibility
-      const labelOpacityTop = percentage / 100; // Top label fades as slider moves right
-      const labelOpacityBottom = 1 - percentage / 100; // Bottom label fades as slider moves left
+      // Hide the labels when the slider reaches their edges
+      if (percentage <= 10) {
+        labelTop.style.display = 'none';  // Hide top label when slider reaches 90%
+      } else {
+        labelTop.style.display = 'block'; // Show top label when slider moves away
+      }
 
-      labelTop.style.opacity = labelOpacityTop.toFixed(2);
-      labelBottom.style.opacity = labelOpacityBottom.toFixed(2);
+      if (percentage >= 90) {
+        labelBottom.style.display = 'none';  // Hide bottom label when slider reaches 10%
+      } else {
+        labelBottom.style.display = 'block'; // Show bottom label when slider moves away
+      }
+
       syncVideos();
     });
-
-
 })
