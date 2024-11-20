@@ -1,6 +1,13 @@
 window.HELP_IMPROVE_VIDEOJS = false;
 
 
+function sleepSync(ms) {
+  const start = Date.now();
+  while (Date.now() - start < ms) {
+    // Busy-waiting: do nothing, just wait for the time to pass
+  }
+}
+
 $(document).ready(function() {
 
     // Check for click events on the navbar burger icon
@@ -62,6 +69,7 @@ $(document).ready(function() {
         });
     }
 
+    sleepSync(3000);
 
     // teaser
     const videoContainer = document.querySelector(".teaser-video-container");
@@ -71,9 +79,6 @@ $(document).ready(function() {
     const video2 = document.getElementById("teaser-video2");
     const labelTop = document.getElementById("teaser-label-top");
     const labelBottom = document.getElementById("teaser-label-bottom");
-    // Synchronization variables
-    let video1Ready = false;
-    let video2Ready = false;
 
     // Set initial position for labels (50/50 split)
     labelTop.style.opacity = "1";
