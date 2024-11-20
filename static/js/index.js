@@ -65,46 +65,49 @@ $(document).ready(function() {
 
     // teaser
     const videoContainer = document.querySelector(".teaser-video-container");
-const video2Wrapper = document.getElementById("teaser-video2-wrapper");
-const slider = document.getElementById("teaser-slider");
-const video1 = document.getElementById("teaser-video1");
-const video2 = document.getElementById("teaser-video2");
-const labelTop = document.getElementById("teaser-label-top");
-const labelBottom = document.getElementById("teaser-label-bottom");
+    const video2Wrapper = document.getElementById("teaser-video2-wrapper");
+    const slider = document.getElementById("teaser-slider");
+    const video1 = document.getElementById("teaser-video1");
+    const video2 = document.getElementById("teaser-video2");
+    const labelTop = document.getElementById("teaser-label-top");
+    const labelBottom = document.getElementById("teaser-label-bottom");
+    // Synchronization variables
+    let video1Ready = false;
+    let video2Ready = false;
 
-// Set initial position for labels (50/50 split)
-labelTop.style.opacity = "1";
-labelBottom.style.opacity = "1";
+    // Set initial position for labels (50/50 split)
+    labelTop.style.opacity = "1";
+    labelBottom.style.opacity = "1";
 
-// Pause videos on hover
-videoContainer.addEventListener("mouseenter", () => {
-  video1.pause();
-  video2.pause();
-});
+    // Pause videos on hover
+    videoContainer.addEventListener("mouseenter", () => {
+      video1.pause();
+      video2.pause();
+    });
 
-// Resume videos on leave
-videoContainer.addEventListener("mouseleave", () => {
-  video1.play();
-  video2.play();
-});
+    // Resume videos on leave
+    videoContainer.addEventListener("mouseleave", () => {
+      video1.play();
+      video2.play();
+    });
 
-// Move the slider dynamically and adjust label visibility
-videoContainer.addEventListener("mousemove", (event) => {
-  const rect = videoContainer.getBoundingClientRect();
-  const offsetX = event.clientX - rect.left;
-  const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
+    // Move the slider dynamically and adjust label visibility
+    videoContainer.addEventListener("mousemove", (event) => {
+      const rect = videoContainer.getBoundingClientRect();
+      const offsetX = event.clientX - rect.left;
+      const percentage = Math.max(0, Math.min(100, (offsetX / rect.width) * 100));
 
-  // Update slider position and video clipping
-  video2Wrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
-  slider.style.left = `${percentage}%`;
+      // Update slider position and video clipping
+      video2Wrapper.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+      slider.style.left = `${percentage}%`;
 
-  // Adjust label visibility
-  const labelOpacityTop = percentage / 100; // Top label fades as slider moves right
-  const labelOpacityBottom = 1 - percentage / 100; // Bottom label fades as slider moves left
+      // Adjust label visibility
+      const labelOpacityTop = percentage / 100; // Top label fades as slider moves right
+      const labelOpacityBottom = 1 - percentage / 100; // Bottom label fades as slider moves left
 
-  labelTop.style.opacity = labelOpacityTop.toFixed(2);
-  labelBottom.style.opacity = labelOpacityBottom.toFixed(2);
-});
+      labelTop.style.opacity = labelOpacityTop.toFixed(2);
+      labelBottom.style.opacity = labelOpacityBottom.toFixed(2);
+    });
 
 
 })
