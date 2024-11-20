@@ -231,32 +231,46 @@
     </div>
     <!--/ Abstract. -->
 
-    <!-- Paper video. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Video</h2>
-        <div class="publication-video">
-          <iframe src=""
-                  frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
-      </div>
-    </div>
-    <!--/ Paper video. -->
-
     <!-- Model Pipeline. -->
     <div class="columns is-centered has-text-centered">
       <div class="column is-full-width">
         <h2 class="title is-3">Overview</h2>
-        <div class="content has-text-justified">
-          <p>
-            Hi
-          </p>
-        </div>
         <div class="content has-text-centered">
           <img src="./static/images/rgba_textures.svg" style="width: 50%;">
         </div>
+        <div class="content has-text-justified">
+          <p>
+            Textured Gaussians encapsulate four kinds of color and opacity spatial variations.
+    The top row of the figure shows the texture map associated with each Gaussian, and the bottom row shows the rendered Textured Gaussians.
+    The constant-color and constant-alpha model (no textures) corresponds to the origianl 3DGS formation, which can only represent a single color up to a Gaussian falloff factor within the Gaussian extent.
+    <b>Textured Gaussians can already model spatially varying colors using only alpha textures since each pixel can be alpha-composited differently.</b>
+    The model achieves maximum expressivity when leveraging the full RGBA texture map, where each Gaussian is capable of representing complex shapes and high frequency textures.
+          </p>
+        </div>
         <div class="content has-text-centered">
           <img src="./static/images/model_pipeline.svg" style="width: 100%;">
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Our method consists of three major components: <b>ray-Gaussian intersection, RGBA texture mapping, and a generalized Gaussian appearance model</b>.
+            To render the color of a pixel, we
+            <ol>
+              <li>Trace a ray from the camera center to the pixel to intersect with 3D Gaussians in the scene.</li>
+              <li>Query texture and alpha values from the per-Gaussian RGBA texture maps using the ray-Gaussian intersection point.</li>
+              <li>Given the retrieved spatially varying color and alpha values, we alpha-composite the color and alpha values of Gaussians that
+                are hit by the pixel ray using the generalized Gaussian appearance model.</li>
+            </ol>
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/num_gaussians_ablation.svg" style="width: 75%;">
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Through texturing Gaussians, our model achieves strictly better novel-view synthesis (NVS) quality compared to 3DGS when using the same number of Gaussians.
+            Here, we show NVS performance in terms of PSNR / SSIM /  LPIPS for our RGBA Textured Gaussians models and 3DGS models with the same number of Gaussians.
+            Our models consistently achieves better NVS performance.
+          </p>
         </div>
       </div>
     </div>
@@ -268,10 +282,10 @@
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
-    <pre><code>@article{xxx2024texturedgaussians,
-  author    = {},
+    <pre><code>@article{xxx2025texturedgaussians,
+  author    = {Anonymous},
   title     = {Textured Gaussians for Enhanced 3D Scene Appearance Modeling},
-  journal   = {},
+  journal   = {CVPR submission},
   year      = {2025},
 }</code></pre>
   </div>
