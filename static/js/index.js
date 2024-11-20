@@ -69,7 +69,6 @@ $(document).ready(function() {
         });
     }
 
-    sleepSync(3000);
 
     // teaser
     const videoContainer = document.querySelector(".teaser-video-container");
@@ -88,13 +87,35 @@ $(document).ready(function() {
     videoContainer.addEventListener("mouseenter", () => {
       video1.pause();
       video2.pause();
+      syncVideos();
     });
 
     // Resume videos on leave
     videoContainer.addEventListener("mouseleave", () => {
       video1.play();
       video2.play();
+      syncVideos();
     });
+
+
+    // Sync settings
+    const syncThreshold = 0.01; // Allowable time difference (in seconds) for sync tolerance
+
+    // Function to check and sync videos
+    function syncVideos() {
+      // console.log("syncing videos...");
+      const video1Time = video1.currentTime;
+      const video2Time = video2.currentTime;
+      // If the videos are out of sync beyond the threshold
+      if (Math.abs(video1Time - video2Time) > syncThreshold) {
+        // Sync video2 to video1's time (or vice versa, depending on which you want to prioritize)
+        console.log("actually syncing videos...");
+        video2.currentTime = video1Time;
+      }
+    }
+
+    // Polling mechanism to check sync every 50ms (20 times per second)
+    setInterval(syncVideos, 10);
 
     // Move the slider dynamically and adjust label visibility
     videoContainer.addEventListener("mousemove", (event) => {
@@ -112,6 +133,7 @@ $(document).ready(function() {
 
       labelTop.style.opacity = labelOpacityTop.toFixed(2);
       labelBottom.style.opacity = labelOpacityBottom.toFixed(2);
+      syncVideos();
     });
 
 
