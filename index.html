@@ -128,10 +128,25 @@
 <section class="hero teaser">
   <div class="container is-max-desktop">
     <div class="hero-body">
-      <video id="teaser" autoplay muted loop playsinline height="100%">
-        <source src=""
-                type="video/mp4">
-      </video>
+      <div class="teaser-video-container">
+        <div class="teaser-video-wrapper" id="teaser-video1-wrapper">
+          <video id="teaser-video1" autoplay loop muted>
+            <source src="static/videos/num_gs/mipnerf360-bicycle_3DGS_1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="teaser-video-wrapper" id="teaser-video2-wrapper">
+          <video id="teaser-video2" autoplay loop muted>
+            <source src="static/videos/num_gs/mipnerf360-bicycle_Ours_1.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <div class="teaser-slider" id="teaser-slider"></div>
+        <!-- Labels -->
+        <div class="teaser-label teaser-label-top" id="teaser-label-top">Ours</div>
+        <div class="teaser-label teaser-label-bottom" id="teaser-label-bottom">3DGS</div>
+      </div>
+      <br>
       <h2 class="subtitle has-text-centered">
         Our RGBA Textured Gaussians enhance 3D scene appearance modeling, leading to improved rendering quality while using the same number of Gaussians compared to 3DGS.
         Here, we show that Textured Gaussians faithfully reconstruct the fine details of scenes.
@@ -141,12 +156,13 @@
 </section>
 
 
+
 <section class="hero is-light is-small">
   <div class="hero-body">
     <div class="container">
       <div id="results-carousel" class="carousel results-carousel">
         <div class="item item-mipnerf360_bicycle">
-          <video poster="" id="mipnerf360_bicycle" autoplay controls muted loop playsinline height="100%">
+          <video poster="" id="mipnerf360_bicycle" class="hello" autoplay controls muted loop playsinline height="100%">
             <source src="static/main_website_videos/mipnerf360_bicycle.mp4"
                     type="video/mp4">
           </video>
