@@ -28,6 +28,7 @@
 </head>
 <body>
 
+<!--
 <nav class="navbar" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
@@ -47,6 +48,7 @@
 
   </div>
 </nav>
+-->
 
 
 <section class="hero">
@@ -60,14 +62,14 @@
               <a href="">Anonymous</a>
             </span>-->
           </div>
-
+          <!--
           <div class="is-size-5 publication-authors">
             <span class="author-block"></span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
+
               <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
@@ -86,7 +88,7 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Supplementary Materials Link -->
+
               <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
@@ -96,7 +98,7 @@
                   <span>Supplementary Materials</span>
                 </a>
               </span>
-              <!-- Video Link. -->
+
               <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
@@ -106,7 +108,7 @@
                   <span>Video</span>
                 </a>
               </span>
-              <!-- Code Link. -->
+
               <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
@@ -117,8 +119,8 @@
                   </a>
               </span>
             </div>
-
           </div>
+        -->
         </div>
       </div>
     </div>
@@ -201,13 +203,13 @@
           </div>
         </div>
         <div class="control is-fullwidth">
-          <input type="range" id="slider" min="1" max="7" value="1" step="1" onchange="updateColorVaryVideo()" class="slider is-fullwidth is-large is-info">
+          <input type="range" id="slider" min="1" max="7" value="1" step="1" onchange="updateColorVarySlider()" class="slider is-fullwidth is-large is-info">
           <div class="is-fullwidth has-text-centered" id="slider-value">Percentage of Gaussians: 1%</div>
         </div>
       </div>
 
       <div class="column is-half">
-        <video controls muted loop playsinline preload="auto" id="video-vary-gaussians" width="640" height="480">
+        <video controls muted loop playsinline autoplay preload="auto" id="video-vary-gaussians" width="640" height="480">
           <!--<source id="video-source-vary-gaussians" src="static/videos/num_gs/mipnerf360-kitchen_3DGS_1.mp4" type="video/mp4">-->
           <source id="video-source-vary-gaussians" src="static/compressed_videos_small/mipnerf360-bicycle_3DGS_1.mp4" type="video/mp4">
         </video>
@@ -352,7 +354,7 @@
         </div>
 
       <div class="column is-half">
-        <video controls muted loop playsinline preload="auto" id="video-tex-ablation" width="640" height="480">
+        <video controls muted loop playsinline autoplay preload="auto" id="video-tex-ablation" width="640" height="480">
           <source id="video-source-tex-ablation" src="static/compressed_videos_small/mipnerf360-bicycle_none.mp4" type="video/mp4">
         </video>
         <div id="video-name-tex-ablation"></div>
@@ -425,7 +427,7 @@
         </div>
 
       <div class="column is-half">
-        <video controls muted loop playsinline preload="auto" id="video-color-decomp" width="640" height="480">
+        <video controls muted loop playsinline autoplay preload="auto" id="video-color-decomp" width="640" height="480">
           <source id="video-source-color-decomp" src="static/compressed_videos_small/mipnerf360-bicycle_none_base.mp4" type="video/mp4">
         </video>
         <div id="video-name-color-decomp"></div>
@@ -439,7 +441,7 @@
 </section>
 
 
-
+<!--
 <section class="section" id="BibTeX">
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
@@ -484,6 +486,7 @@
     </div>
   </div>
 </footer>
+-->
 
 </body>
 </html>

@@ -30,11 +30,13 @@ window.onload = function() {
 function selectScene(scene) {
   document.querySelectorAll('[id^="scene-button"]').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-button-${scene}`).classList.add('is-active');
+  document.getElementById('video-vary-gaussians').setAttribute("autoplay", "");
   currentScene = scene;
   updateColorVaryVideo();
 }
 
 function selectModel(model) {
+  document.getElementById('video-vary-gaussians').removeAttribute("autoplay");
   document.querySelectorAll('#model-button-3dgs, #model-button-ours').forEach(button => button.classList.remove('is-active'));
   if (model === '3DGS') {
     document.getElementById('model-button-3dgs').classList.add('is-active');
@@ -45,6 +47,14 @@ function selectModel(model) {
   updateColorVaryVideo();
 }
 
+function updateColorVarySlider() {
+  document.getElementById('video-vary-gaussians').removeAttribute("autoplay");
+  let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
+  currentValue = parseInt(document.getElementById('slider').value);
+  document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1] + "%";
+  updateColorVaryVideo()
+}
+
 function updateColorVaryVideo() {
   let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
   currentValue = parseInt(document.getElementById('slider').value);
@@ -53,8 +63,6 @@ function updateColorVaryVideo() {
   currentTimeVaryGaussians = document.getElementById('video-vary-gaussians').currentTime;
   document.getElementById('video-vary-gaussians').load();
   document.getElementById('video-vary-gaussians').currentTime = currentTimeVaryGaussians;
-  //document.getElementById('video-name-vary-gaussians').innerHTML = videoName;
-  document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1] + "%";
 }
 
 
@@ -100,6 +108,7 @@ function updateVaryTexResFixNumGSVideo() {
 
 // Texture map ablation
 function selectTexAblationScene(scene) {
+  document.getElementById('video-tex-ablation').setAttribute("autoplay", "");
   document.querySelectorAll('[id^="scene-tex-ablation-button"]').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-tex-ablation-button-${scene}`).classList.add('is-active');
   currentTextureAblationScene = scene;
@@ -108,6 +117,7 @@ function selectTexAblationScene(scene) {
 
 
 function selectTexture(texture) {
+  document.getElementById('video-tex-ablation').removeAttribute("autoplay");
   document.querySelectorAll('#texture-button-none, #texture-button-alpha, #texture-button-rgb, #texture-button-rgba').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`texture-button-${texture}`).classList.add('is-active');
   currentTexture = texture;
@@ -127,6 +137,7 @@ function updateTexAblationVideo() {
 
 // Color component decomposition
 function selectSceneDecomp(scene) {
+  document.getElementById('video-color-decomp').setAttribute("autoplay", "");
   document.querySelectorAll('[id^="scene-decomp-button"]').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-decomp-button-${scene}`).classList.add('is-active');
   currentSceneDecomp = scene;
@@ -135,6 +146,7 @@ function selectSceneDecomp(scene) {
 
 
 function selectTexDecomp(texture) {
+  document.getElementById('video-color-decomp').removeAttribute("autoplay");
   document.querySelectorAll('#decomp-tex-button-none, #decomp-tex-button-alpha, #decomp-tex-button-rgb, #decomp-tex-button-rgba').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`decomp-tex-button-${texture}`).classList.add('is-active');
   currentTexDecomp = texture;
@@ -142,6 +154,7 @@ function selectTexDecomp(texture) {
 }
 
 function selectColorDecomp(color) {
+  document.getElementById('video-color-decomp').removeAttribute("autoplay");
   document.querySelectorAll('#decomp-color-button-base, #decomp-color-button-tex').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`decomp-color-button-${color}`).classList.add('is-active');
   currentColorDecomp = color;
