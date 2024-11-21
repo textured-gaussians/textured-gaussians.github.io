@@ -55,6 +55,11 @@ $(document).ready(function() {
       "mipnerf360_counter",
       "mipnerf360_treehill",
       "mipnerf360_garden",
+      "tandt_db_train",
+      "tandt_db_truck",
+      "tandt_db_drjohnson",
+      "custom_children_art",
+      "custom_flower_gallery"
     ];
     for (var i = 0; i < video_id_list.length; i++) {
         let video_element = document.getElementById(video_id_list[i]);
