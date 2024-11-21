@@ -56,9 +56,9 @@
         <div class="column has-text-centered">
           <h1 class="title is-1 publication-title">Textured Gaussians for Enhanced 3D Scene Appearance Modeling <br><i style="font-weight: normal;">Supplemental Materials</i></h1>
           <div class="is-size-5 publication-authors">
-            <span class="author-block">
+            <!--<span class="author-block">
               <a href="">Anonymous</a>
-            </span>
+            </span>-->
           </div>
 
           <div class="is-size-5 publication-authors">
@@ -135,7 +135,9 @@
         <div class="content has-text-justified">
           <p>
             In this supplemental website, we show novel-view synthesis (NVS) <b>video</b> results of extensive experiments
-            and ablation studies conducted on the five standard benchmark datasets and our custom-captured dataset.
+            and ablation studies conducted on the five standard benchmark datasets and our custom-captured dataset. Due to
+            file size constraints, we show <b>scene-level</b> NVS results of selected scenes from the Mip-NeRF 360, Tanks and Temples, Deep Blending,
+            and our custom-captured datasets.
           </p>
         </div>
         <div class="content has-text-justified">
@@ -178,7 +180,7 @@
               Scene
             </div>
             <div class="buttons is-vertical">
-              <button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+              <!--<button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
               <button id="scene-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
               <button id="scene-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
               <button id="scene-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
@@ -206,7 +208,8 @@
 
       <div class="column is-half">
         <video controls muted loop playsinline preload="auto" id="video-vary-gaussians" width="640" height="480">
-          <source id="video-source-vary-gaussians" src="static/videos/num_gs/mipnerf360-kitchen_3DGS_1.mp4" type="video/mp4">
+          <!--<source id="video-source-vary-gaussians" src="static/videos/num_gs/mipnerf360-kitchen_3DGS_1.mp4" type="video/mp4">-->
+          <source id="video-source-vary-gaussians" src="static/compressed_videos/custom-children_art_alpha_base.mp4" type="video/mp4">
         </video>
         <div id="video-name-vary-gaussians"></div>
       </div>
@@ -323,7 +326,7 @@
               Scene
             </div>
             <div class="buttons is-vertical">
-              <button id="scene-tex-ablation-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+              <!--<button id="scene-tex-ablation-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
               <button id="scene-tex-ablation-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
               <button id="scene-tex-ablation-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
               <button id="scene-tex-ablation-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
@@ -387,7 +390,7 @@
               Scene
             </div>
             <div class="buttons is-vertical">
-              <button id="scene-decomp-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+              <!--<button id="scene-decomp-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
               <button id="scene-decomp-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
               <button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
               <button id="scene-decomp-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
@@ -441,7 +444,7 @@
   <div class="container is-max-desktop content">
     <h2 class="title">BibTeX</h2>
     <pre><code>@article{xxx2025texturedgaussians,
-  author    = {Anonymous},
+  author    = {},
   title     = {Textured Gaussians for Enhanced 3D Scene Appearance Modeling},
   journal   = {},
   year      = {2025},
