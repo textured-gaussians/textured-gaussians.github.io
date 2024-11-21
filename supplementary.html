@@ -139,7 +139,7 @@
             In this supplemental website, we show novel-view synthesis (NVS) <b>video</b> results of extensive experiments
             and ablation studies conducted on the five standard benchmark datasets and our custom-captured dataset. Due to
             file size constraints, we show <b>scene-level</b> NVS results of selected scenes from the Mip-NeRF 360, Tanks and Temples, Deep Blending,
-            and our custom-captured datasets.
+            and our custom-captured datasets, and show <b>compressed videos</b>.
           </p>
         </div>
         <div class="content has-text-justified">
@@ -148,9 +148,9 @@
             <!--
             <li><a href="#vary-num-gs-fix-tex-res">NVS Results with Varying Numbers of Gaussians and Fixed Texture Map Resolution</a></li>
             <li><a href="#vary-tex-res-fix-num-gs">NVS Results with Varying Texture Map Resolutions and Fixed Number of Gaussians</a></li>
-            -->
             <li><a href="#tex-ablation">Texture Map Ablations</a></li>
-            <li><a href="#color-decomp">Color Component Decomposition Visualizations</a></li>
+            -->
+            <li><a href="#tex-ablation-color-decomp">Texture Map Ablations and Color Component Decomposition Visualizations</a></li>
           </ol>
         </div>
       </div>
@@ -170,15 +170,19 @@
       <p>
         When toggling between <b>3DGS</b> and <b>Ours</b> while using the same number of Gaussians,
         our method clearly reconstructs sharper details and is
-        most evident with fewer Gaussians.When varying the number of Gaussians using the slider, we see that recontruction performance improves as the number of
+        most evident with fewer Gaussians. When varying the number of Gaussians using the slider, we see that recontruction performance improves as the number of
         Gaussians increase, as expected.
       </p>
     </div>
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
+        <div class="control is-fullwidth">
+          <div class="is-fullwidth has-text-centered" id="slider-value">Percentage of Gaussians: 1%</div>
+          <input type="range" id="slider" min="1" max="4" value="1" step="1" onchange="updateColorVarySlider()" class="slider is-fullwidth is-large is-info">
+        </div>
         <div class="columns is-multiline">
           <div class="column is-half">
-            <div class="is-fullwidth has-text-centered">
+            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
               Scene
             </div>
             <div class="buttons is-vertical">
@@ -193,7 +197,7 @@
             </div>
           </div>
           <div class="column is-half">
-            <div class="is-fullwidth has-text-centered">
+            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
               Model Type
             </div>
             <div class="buttons is-vertical">
@@ -202,16 +206,12 @@
             </div>
           </div>
         </div>
-        <div class="control is-fullwidth">
-          <input type="range" id="slider" min="1" max="7" value="1" step="1" onchange="updateColorVarySlider()" class="slider is-fullwidth is-large is-info">
-          <div class="is-fullwidth has-text-centered" id="slider-value">Percentage of Gaussians: 1%</div>
-        </div>
       </div>
 
       <div class="column is-half">
         <video controls muted loop playsinline autoplay preload="auto" id="video-vary-gaussians" width="640" height="480">
           <!--<source id="video-source-vary-gaussians" src="static/videos/num_gs/mipnerf360-kitchen_3DGS_1.mp4" type="video/mp4">-->
-          <source id="video-source-vary-gaussians" src="static/compressed_videos_small/mipnerf360-bicycle_3DGS_1.mp4" type="video/mp4">
+          <source id="video-source-vary-gaussians" src="static/videos/all/mipnerf360-bicycle_3DGS_1.mp4" type="video/mp4">
         </video>
         <div id="video-name-vary-gaussians"></div>
       </div>
@@ -303,7 +303,7 @@
   </div>
 -->
 
-<!-- Texture Map Ablations -->
+<!-- Texture Map Ablations
 <div class="columns is-centered">
   <div class="column is-full-width">
     <h2 id="tex-ablation" class="title is-3">Texture Map Ablations</h2>
@@ -328,7 +328,7 @@
               Scene
             </div>
             <div class="buttons is-vertical">
-              <!--<button id="scene-tex-ablation-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
+              <button id="scene-tex-ablation-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
               <button id="scene-tex-ablation-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
               <button id="scene-tex-ablation-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
               <button id="scene-tex-ablation-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
@@ -362,17 +362,18 @@
     </div>
   </div>
 </div>
-<!--/ Texture Map Ablations -->
+-->
 
 
 <!-- Color Decomposition Visualization -->
 <div class="columns is-centered">
   <div class="column is-full-width">
-    <h2 id="color-decomp" class="title is-3">Color Component Decomposition Visualization</h2>
+    <h2 id="tex-ablation-color-decomp" class="title is-3">Texture Map Ablations and Color Component Decomposition Visualizations</h2>
     <div class="content has-text-justified">
       <p>
         We optimized our Textured Gaussians model with alpha (A), RGB, and RGBA texture maps with 1% of the default number of
-        optimized Gaussians, and visualize the <i>alpha modulated and composited</i> base and texture color components.
+        optimized Gaussians, and visualize the <i>alpha modulated and composited</i> <b>base</b> and <b>texture</b> color components, and the
+        final rendered color (labelled <b>base + texture</b>). We also show 3DGS optimized with the same number of Gaussians as comparison.
       </p>
       <p>
         With alpha textures, we see from results of the alpha-only and RGBA textures model that high-frequency
@@ -388,38 +389,41 @@
       <div class="column is-half" style="margin-right: 2rem;">
         <div class="columns is-multiline">
           <div class="column is-5">
-            <div class="is-fullwidth has-text-centered">
+            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
               Scene
             </div>
             <div class="buttons is-vertical">
               <!--<button id="scene-decomp-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
               <button id="scene-decomp-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
-              <button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
+              <!--<button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>-->
               <button id="scene-decomp-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
-              <button id="scene-decomp-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-train')">Train (Tanks and Temples)</button>
-              <button id="scene-decomp-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-truck')">Truck (Tanks and Temples)</button>
+              <!--<button id="scene-decomp-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-train')">Train (Tanks and Temples)</button>-->
+              <!--<button id="scene-decomp-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-truck')">Truck (Tanks and Temples)</button>-->
               <button id="scene-decomp-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-flower_gallery')">Flower Gallery (Custom)</button>
-              <button id="scene-decomp-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-children_art')">Children Art (Custom)</button>
+              <!--<button id="scene-decomp-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-children_art')">Children Art (Custom)</button>-->
             </div>
           </div>
           <div class="column is-4">
-            <div class="is-fullwidth has-text-centered">
+            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
               Texture map variants
             </div>
             <div class="buttons is-vertical">
-              <button id="decomp-tex-button-none" class="button is-outlined is-fullwidth is-active" onclick="selectTexDecomp('none')">None</button>
+              <button id="decomp-tex-button-none" class="button is-outlined is-fullwidth is-active" onclick="selectTexDecomp('none')">3DGS (no textures)</button>
               <button id="decomp-tex-button-alpha" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('alpha')">Alpha</button>
               <button id="decomp-tex-button-rgb" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgb')">RGB</button>
               <button id="decomp-tex-button-rgba" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgba')">RGBA</button>
             </div>
           </div>
           <div class="column is-3">
-            <div class="is-fullwidth has-text-centered">
+            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
               Color Component
             </div>
             <div class="buttons is-vertical">
               <button id="decomp-color-button-base" class="button is-outlined is-fullwidth is-active" onclick="selectColorDecomp('base')">Base</button>
               <button id="decomp-color-button-tex" class="button is-outlined is-fullwidth" onclick="selectColorDecomp('tex')">Texture</button>
+              <button id="decomp-color-button-final" class="button is-outlined is-fullwidth" onclick="selectColorDecomp('final')">
+                <span>Base + Texture</span>
+              </button>
             </div>
           </div>
         </div>
@@ -428,7 +432,7 @@
 
       <div class="column is-half">
         <video controls muted loop playsinline autoplay preload="auto" id="video-color-decomp" width="640" height="480">
-          <source id="video-source-color-decomp" src="static/compressed_videos_small/mipnerf360-bicycle_none_base.mp4" type="video/mp4">
+          <source id="video-source-color-decomp" src="static/videos/all/mipnerf360-bicycle_none_base.mp4" type="video/mp4">
         </video>
         <div id="video-name-color-decomp"></div>
       </div>

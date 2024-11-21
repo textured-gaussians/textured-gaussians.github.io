@@ -1,3 +1,7 @@
+#slider-value {
+  font-size: 1rem;
+  font-weight: bold;
+}
 .teaser-video-container {
   position: relative;
   width: 100%;
