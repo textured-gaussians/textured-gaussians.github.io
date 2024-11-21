@@ -28,7 +28,7 @@ window.onload = function() {
 // Varying number of Gaussians
 
 function selectScene(scene) {
-  document.querySelectorAll('#scene-button-mipnerf360-kitchen, #scene-button-mipnerf360-bicycle, #scene-button-mipnerf360-stump, #scene-button-custom-flower_gallery, #scene-button-custom-children_art').forEach(button => button.classList.remove('is-active'));
+  document.querySelectorAll('[id^="scene-button"]').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-button-${scene}`).classList.add('is-active');
   currentScene = scene;
   updateColorVaryVideo();
@@ -100,7 +100,7 @@ function updateVaryTexResFixNumGSVideo() {
 
 // Texture map ablation
 function selectTexAblationScene(scene) {
-  document.querySelectorAll('#scene-tex-ablation-button-mipnerf360-kitchen, #scene-tex-ablation-button-mipnerf360-bicycle, #scene-tex-ablation-button-mipnerf360-stump, #scene-tex-ablation-button-custom-flower_gallery, #scene-tex-ablation-button-custom-children_art').forEach(button => button.classList.remove('is-active'));
+  document.querySelectorAll('[id^="scene-tex-ablation-button"]').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-tex-ablation-button-${scene}`).classList.add('is-active');
   currentTextureAblationScene = scene;
   updateTexAblationVideo();
@@ -127,7 +127,7 @@ function updateTexAblationVideo() {
 
 // Color component decomposition
 function selectSceneDecomp(scene) {
-  document.querySelectorAll('#scene-decomp-button-mipnerf360-kitchen, #scene-decomp-button-mipnerf360-bicycle, #scene-decomp-button-mipnerf360-stump, #scene-decomp-button-custom-flower_gallery, #scene-decomp-button-custom-children_art').forEach(button => button.classList.remove('is-active'));
+  document.querySelectorAll('[id^="scene-decomp-button"]').forEach(button => button.classList.remove('is-active'));
   document.getElementById(`scene-decomp-button-${scene}`).classList.add('is-active');
   currentSceneDecomp = scene;
   updateColorDecompVideo();

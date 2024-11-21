@@ -141,8 +141,10 @@
         <div class="content has-text-justified">
           <ol>
             <li><a href="#vary-gaussians-fixed-texels">NVS Results with Varying Numbers of Gaussians and Fixed Amount of Texels</a></li>
+            <!--
             <li><a href="#vary-num-gs-fix-tex-res">NVS Results with Varying Numbers of Gaussians and Fixed Texture Map Resolution</a></li>
             <li><a href="#vary-tex-res-fix-num-gs">NVS Results with Varying Texture Map Resolutions and Fixed Number of Gaussians</a></li>
+            -->
             <li><a href="#tex-ablation">Texture Map Ablations</a></li>
             <li><a href="#color-decomp">Color Component Decomposition Visualizations</a></li>
           </ol>
@@ -179,6 +181,9 @@
               <button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
               <button id="scene-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
               <button id="scene-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
+              <button id="scene-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
+              <button id="scene-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-train')">Train (Tanks and Temples)</button>
+              <button id="scene-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-truck')">Truck (Tanks and Temples)</button>
               <button id="scene-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
               <button id="scene-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectScene('custom-children_art')">Children Art (Custom)</button>
             </div>
@@ -211,8 +216,7 @@
 <!--/ Novel View Synthesis Results with Varying Numbers of Gaussians -->
 
 
-
-  <!--/ Novel View Synthesis Results - Vary Num GS Fixed Tex Res -->
+<!--
   <div class="columns is-centered">
     <div class="column is-full-width">
       <h2 id="vary-num-gs-fix-tex-res" class="title is-3">NVS Results with Varying Numbers of Gaussians and Fixed Texture Map Resolution</h2>
@@ -252,10 +256,7 @@
       </div>
     </div>
   </div>
-  <!--/ Novel View Synthesis Results - Vary Num GS Fixed Tex Res -->
 
-
-  <!--/ Novel View Synthesis Results - Vary Tex Res Fixed Num GS -->
   <div class="columns is-centered">
     <div class="column is-full-width">
       <h2 id="vary-tex-res-fix-num-gs" class="title is-3">NVS Results with Varying Texture Map Resolution and Fixed Number of Gaussians</h2>
@@ -295,7 +296,7 @@
       </div>
     </div>
   </div>
-  <!--/ Novel View Synthesis Results - Vary Tex Res Fixed Num GS -->
+-->
 
 <!-- Texture Map Ablations -->
 <div class="columns is-centered">
@@ -325,6 +326,9 @@
               <button id="scene-tex-ablation-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
               <button id="scene-tex-ablation-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
               <button id="scene-tex-ablation-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
+              <button id="scene-tex-ablation-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
+              <button id="scene-tex-ablation-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('tandt_db-train')">Train (Tanks and Temples)</button>
+              <button id="scene-tex-ablation-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('tandt_db-truck')">Truck (Tanks and Temples)</button>
               <button id="scene-tex-ablation-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
               <button id="scene-tex-ablation-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('custom-children_art')">Children Art (Custom)</button>
             </div>
@@ -378,7 +382,7 @@
     <div class="columns is-vcentered">
       <div class="column is-half" style="margin-right: 2rem;">
         <div class="columns is-multiline">
-          <div class="column is-one-third">
+          <div class="column is-5">
             <div class="is-fullwidth has-text-centered">
               Scene
             </div>
@@ -386,11 +390,14 @@
               <button id="scene-decomp-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
               <button id="scene-decomp-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
               <button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
+              <button id="scene-decomp-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
+              <button id="scene-decomp-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-train')">Train (Tanks and Temples)</button>
+              <button id="scene-decomp-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-truck')">Truck (Tanks and Temples)</button>
               <button id="scene-decomp-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-flower_gallery')">Flower Gallery (Custom)</button>
               <button id="scene-decomp-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-children_art')">Children Art (Custom)</button>
             </div>
           </div>
-          <div class="column is-one-third">
+          <div class="column is-4">
             <div class="is-fullwidth has-text-centered">
               Texture map variants
             </div>
@@ -401,7 +408,7 @@
               <button id="decomp-tex-button-rgba" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgba')">RGBA</button>
             </div>
           </div>
-          <div class="column is-one-third">
+          <div class="column is-3">
             <div class="is-fullwidth has-text-centered">
               Color Component
             </div>
