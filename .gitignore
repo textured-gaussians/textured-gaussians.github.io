@@ -2,4 +2,4 @@
 .idea
 static/videos
 static/compressed_videos
-static/compressed_videos_small
+#static/compressed_videos_small
