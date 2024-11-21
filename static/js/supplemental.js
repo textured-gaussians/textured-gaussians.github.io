@@ -1,21 +1,21 @@
-let currentScene = 'mipnerf360-kitchen';
+let currentScene = 'mipnerf360-bicycle';
 let currentModel = '3DGS';
 let currentTimeVaryGaussians = 0;
 
-let currentTextureAblationScene = 'mipnerf360-kitchen';
+let currentTextureAblationScene = 'mipnerf360-bicycle';
 let currentTexture = 'none';
 let currentTimeTextureAblation = 0;
 
-let currentSceneDecomp = 'mipnerf360-kitchen';
+let currentSceneDecomp = 'mipnerf360-bicycle';
 let currentTexDecomp = 'none';
 let currentColorDecomp = 'base';
 let currentTimeColorDecomp = 0;
 
-let currentSceneVaryNumGSFixTexRes = 'mipnerf360-kitchen';
+let currentSceneVaryNumGSFixTexRes = 'mipnerf360-bicycle';
 let currentValueVaryNumGSFixTexRes = 1;
 let currentTimeVaryNumGSFixTexRes = 0;
 
-let currentSceneVaryTexResFixNumGS = 'mipnerf360-kitchen';
+let currentSceneVaryTexResFixNumGS = 'mipnerf360-bicycle';
 let currentValueVaryTexResFixNumGS = 1;
 let currentTimeVaryTexResFixNumGS = 0;
 
@@ -49,7 +49,7 @@ function updateColorVaryVideo() {
   let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
   currentValue = parseInt(document.getElementById('slider').value);
   let videoName = `${currentScene}_${currentModel}_${sliderValues[currentValue - 1]}.mp4`;
-  document.getElementById('video-source-vary-gaussians').src = `./static/videos/num_gs/${videoName}`;
+  document.getElementById('video-source-vary-gaussians').src = `./static/compressed_videos_small/${videoName}`;
   currentTimeVaryGaussians = document.getElementById('video-vary-gaussians').currentTime;
   document.getElementById('video-vary-gaussians').load();
   document.getElementById('video-vary-gaussians').currentTime = currentTimeVaryGaussians;
@@ -70,7 +70,7 @@ function updateVaryNumGSFixTexResVideo() {
   let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
   currentValueVaryNumGSFixTexRes = parseInt(document.getElementById('vary-num-gs-fix-tex-res-slider').value);
   let videoName = `${currentSceneVaryNumGSFixTexRes}_${sliderValues[currentValueVaryNumGSFixTexRes - 1]}.mp4`;
-  document.getElementById('video-source-vary-num-gs-fix-tex-res').src = `./static/videos/fix_tex_res_vary_num_gs/${videoName}`;
+  document.getElementById('video-source-vary-num-gs-fix-tex-res').src = `./static/compressed_videos_small/${videoName}`;
   currentTimeVaryNumGSFixTexRes = document.getElementById('video-vary-num-gs-fix-tex-res').currentTime;
   document.getElementById('video-vary-num-gs-fix-tex-res').load();
   document.getElementById('video-vary-num-gs-fix-tex-res').currentTime = currentTimeVaryNumGSFixTexRes;
@@ -90,7 +90,7 @@ function updateVaryTexResFixNumGSVideo() {
   let sliderValues = [2, 5, 10, 20, 30, 40];
   currentValueVaryTexResFixNumGS = parseInt(document.getElementById('vary-tex-res-fix-num-gs-slider').value);
   let videoName = `${currentSceneVaryTexResFixNumGS}_${sliderValues[currentValueVaryTexResFixNumGS - 1]}.mp4`;
-  document.getElementById('video-source-vary-tex-res-fix-num-gs').src = `./static/videos/fix_num_gs_vary_tex_res/${videoName}`;
+  document.getElementById('video-source-vary-tex-res-fix-num-gs').src = `./static/compressed_videos_small/${videoName}`;
   currentTimeVaryTexResFixNumGS = document.getElementById('video-vary-tex-res-fix-num-gs').currentTime;
   document.getElementById('video-vary-tex-res-fix-num-gs').load();
   document.getElementById('video-vary-tex-res-fix-num-gs').currentTime = currentTimeVaryTexResFixNumGS;
@@ -118,7 +118,7 @@ function selectTexture(texture) {
 function updateTexAblationVideo() {
   let videoName = `${currentTextureAblationScene}_${currentTexture}.mp4`;
   currentTimeTextureAblation = document.getElementById('video-tex-ablation').currentTime;
-  document.getElementById('video-source-tex-ablation').src = `./static/videos/tex_ablation/${videoName}`;
+  document.getElementById('video-source-tex-ablation').src = `./static/compressed_videos_small/${videoName}`;
   document.getElementById('video-tex-ablation').load();
   document.getElementById('video-tex-ablation').currentTime = currentTimeTextureAblation;
   //document.getElementById('video-name-tex-ablation').innerHTML = videoName;
@@ -153,7 +153,7 @@ function updateColorDecompVideo() {
   let videoName = `${currentSceneDecomp}_${currentTexDecomp}_${currentColorDecomp}.mp4`;
   console.log(videoName);
   currentTimeColorDecomp = document.getElementById('video-color-decomp').currentTime;
-  document.getElementById('video-source-color-decomp').src = `./static/videos/color_decomp/${videoName}`;
+  document.getElementById('video-source-color-decomp').src = `./static/compressed_videos_small/${videoName}`;
   document.getElementById('video-color-decomp').load();
   document.getElementById('video-color-decomp').currentTime = currentTimeColorDecomp;
   //document.getElementById('video-name-color-decomp').innerHTML = videoName;
