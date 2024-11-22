@@ -78,6 +78,17 @@
 }
 
 
+.buttons {
+  display: flex;
+  flex-direction: column;
+}
+.button {
+  white-space: normal; /* allow multiline text */
+  height: auto; /* adjust height to fit content */
+  padding: 0.5rem 1rem; /* adjust padding to maintain spacing */
+  border-width: 1px; /* adjust border width */
+}
+
 .button.is-active {
   background-color: #3273dc;
   color: #fff;
