@@ -50,14 +50,14 @@ function selectModel(model) {
 }
 
 function updateColorVarySlider() {
-  let sliderValues = ['1', '5', '20', '100'];
+  let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
   currentValue = parseInt(document.getElementById('slider').value);
   document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1] + "%";
   updateColorVaryVideo()
 }
 
 function updateColorVaryVideo() {
-  let sliderValues = ['1', '5', '20', '100'];
+  let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
   currentValue = parseInt(document.getElementById('slider').value);
   let videoName = `${currentScene}_${currentModel}_${sliderValues[currentValue - 1]}.mp4`;
   document.getElementById('video-source-vary-gaussians').src = `./static/videos/all/${videoName}`;

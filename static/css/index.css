@@ -184,6 +184,7 @@ body {
 
 .author-block {
   display: inline-block;
+  margin-left: 1rem;
 }
 
 .publication-banner img {

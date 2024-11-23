@@ -59,7 +59,10 @@ $(document).ready(function() {
       "tandt_db_truck",
       "tandt_db_drjohnson",
       "custom_children_art",
-      "custom_flower_gallery"
+      "custom_flower_gallery",
+      "blender_chair",
+      "blender_lego",
+      "blender_ship",
     ];
     for (var i = 0; i < video_id_list.length; i++) {
         let video_element = document.getElementById(video_id_list[i]);
@@ -148,3 +151,123 @@ $(document).ready(function() {
       syncVideos();
     });
 })
+
+
+// supplemental materials
+let currentScene = 'mipnerf360-bicycle';
+let currentModel = '3DGS';
+let currentTimeVaryGaussians = 0;
+let videoPaused = false;
+
+let currentSceneDecomp = 'mipnerf360-bicycle';
+let currentTexDecomp = 'none';
+let currentColorDecomp = 'base';
+let currentTimeColorDecomp = 0;
+let videoPausedDecomp = false;
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.getElementById("video-vary-gaussians").addEventListener('pause', () => {
+    console.log("pause video");
+    videoPaused = true;
+  });
+  document.getElementById("video-vary-gaussians").addEventListener('play', () => {
+    videoPaused = false;
+  });
+  document.getElementById("video-color-decomp").addEventListener('pause', () => {
+    console.log("pause video");
+    videoPausedDecomp = true;
+  });
+  document.getElementById("video-color-decomp").addEventListener('play', () => {
+    videoPausedDecomp = false;
+  });
+  currentTimeVaryGaussians = document.getElementById('video-vary-gaussians').currentTime;
+  currentTimeColorDecomp = document.getElementById('video-color-decomp').currentTime;
+});
+
+// Varying number of Gaussians
+
+function selectScene(scene) {
+  document.querySelectorAll('[id^="scene-button"]').forEach(button => button.classList.remove('is-active'));
+  document.getElementById(`scene-button-${scene}`).classList.add('is-active');
+  currentScene = scene;
+  updateColorVaryVideo();
+}
+
+function selectModel(model) {
+  document.querySelectorAll('#model-button-3dgs, #model-button-ours').forEach(button => button.classList.remove('is-active'));
+  if (model === '3DGS') {
+    document.getElementById('model-button-3dgs').classList.add('is-active');
+  } else {
+    document.getElementById('model-button-ours').classList.add('is-active');
+  }
+  currentModel = model;
+  updateColorVaryVideo();
+}
+
+function updateColorVarySlider() {
+  let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
+  currentValue = parseInt(document.getElementById('slider').value);
+  document.getElementById('slider-value').innerHTML = "Percentage of Gaussians: " + sliderValues[currentValue - 1] + "%";
+  updateColorVaryVideo()
+}
+
+function updateColorVaryVideo() {
+  let sliderValues = ['1', '2', '5', '10', '20', '50', '100'];
+  currentValue = parseInt(document.getElementById('slider').value);
+  let videoName = `${currentScene}_${currentModel}_${sliderValues[currentValue - 1]}.mp4`;
+  document.getElementById('video-source-vary-gaussians').src = `./static/videos/supp/${videoName}`;
+  currentTimeVaryGaussians = document.getElementById('video-vary-gaussians').currentTime;
+  document.getElementById('video-vary-gaussians').load();
+  document.getElementById('video-vary-gaussians').currentTime = currentTimeVaryGaussians;
+  if(videoPaused){
+    document.getElementById('video-vary-gaussians').pause();
+  } else {
+    document.getElementById('video-vary-gaussians').play();
+  }
+}
+
+// Color component decomposition
+function selectSceneDecomp(scene) {
+  document.querySelectorAll('[id^="scene-decomp-button"]').forEach(button => button.classList.remove('is-active'));
+  document.getElementById(`scene-decomp-button-${scene}`).classList.add('is-active');
+  currentSceneDecomp = scene;
+  updateColorDecompVideo();
+}
+
+
+function selectTexDecomp(texture) {
+  document.querySelectorAll('#decomp-tex-button-none, #decomp-tex-button-alpha, #decomp-tex-button-rgb, #decomp-tex-button-rgba').forEach(button => button.classList.remove('is-active'));
+  document.getElementById(`decomp-tex-button-${texture}`).classList.add('is-active');
+  currentTexDecomp = texture;
+  updateColorDecompVideo();
+}
+
+function selectColorDecomp(color) {
+  document.querySelectorAll('#decomp-color-button-base, #decomp-color-button-tex, #decomp-color-button-final').forEach(button => button.classList.remove('is-active'));
+  document.getElementById(`decomp-color-button-${color}`).classList.add('is-active');
+  currentColorDecomp = color;
+  updateColorDecompVideo();
+}
+
+
+function updateColorDecompVideo() {
+  let videoNameSuffix = currentColorDecomp;
+  if (currentColorDecomp == "final"){
+    if(currentTexDecomp == "none" || currentTexDecomp == "alpha"){
+      videoNameSuffix = "base";
+    }
+  }
+  let videoName = `${currentSceneDecomp}_${currentTexDecomp}_${videoNameSuffix}.mp4`;
+  //console.log(videoName);
+  currentTimeColorDecomp = document.getElementById('video-color-decomp').currentTime;
+  document.getElementById('video-source-color-decomp').src = `./static/videos/supp/${videoName}`;
+  document.getElementById('video-color-decomp').load();
+  document.getElementById('video-color-decomp').currentTime = currentTimeColorDecomp;
+  //document.getElementById('video-name-color-decomp').innerHTML = videoName;
+  if(videoPausedDecomp){
+    document.getElementById('video-color-decomp').pause();
+  } else {
+    document.getElementById('video-color-decomp').play();
+  }
+}
