@@ -36,38 +36,44 @@
           <h1 class="title is-1 publication-title">Textured Gaussians for Enhanced 3D Scene Appearance Modeling</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
-              <a href="">Brian Chao</a>
+              <a href="https://bchao1.github.io/">Brian Chao</a><sup>1,2</sup>
             </span>
             <span class="author-block">
-              <a href="">Hung-Yu Tseng</a>
+              <a href="https://hytseng0509.github.io/">Hung-Yu Tseng</a><sup>2</sup>
             </span>
             <span class="author-block">
-              <a href="">Lorenzo Porzi</a>
+              <a href="https://scholar.google.it/citations?user=vW1gaVEAAAAJ&hl=it">Lorenzo Porzi</a><sup>2</sup>
             </span>
             <span class="author-block">
-              <a href="">Chen Gao</a>
+              <a href="https://www.chengao.vision/">Chen Gao</a><sup>2</sup>
             </span>
             <span class="author-block">
-              <a href="">Qinbo Li</a>
+              <a href="https://scholar.google.com/citations?user=jGQeuBUAAAAJ&hl=en">Tuotuo Li</a><sup>2</sup>
             </span>
             <span class="author-block">
-              <a href="">Tuotuo Li</a>
+              <a href="https://www.qinboli.com/">Qinbo Li</a><sup>2</sup>
             </span>
             <span class="author-block">
-              <a href="">Ayush Saraf</a>
+              <a href="https://scholar.google.com/citations?user=bluhHm8AAAAJ&hl=en">Ayush Saraf</a><sup>2</sup>
             </span>
             <span class="author-block">
-              <a href="">Jia-Bin Huang</a>
+              <a href="https://jbhuang0604.github.io/">Jia-Bin Huang</a><sup>2,3</sup>
             </span>
             <span class="author-block">
-              <a href="">Johannes Kopf</a>
+              <a href="https://johanneskopf.de/">Johannes Kopf</a><sup>2</sup>
             </span>
             <span class="author-block">
-              <a href="">Gordon Wetzstein</a>
+              <a href="https://web.stanford.edu/~gordonwz/">Gordon Wetzstein</a><sup>1</sup>
             </span>
             <span class="author-block">
-              <a href="">Changil Kim</a>
+              <a href="https://changilkim.com/">Changil Kim</a><sup>2</sup>
             </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Stanford University,</span>
+            <span class="author-block"><sup>2</sup>Meta Reality Labs</span>
+            <span class="author-block"><sup>3</sup>University of Maryland, College Park</span>
           </div>
 
           <div class="column has-text-centered">
@@ -91,7 +97,7 @@
                   <span>arXiv</span>
                 </a>
               </span>
-              <!-- Video Link. -->
+              <!-- Video Link.
               <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
@@ -100,7 +106,7 @@
                   </span>
                   <span>Video</span>
                 </a>
-              </span>
+              </span>-->
               <!-- Code Link. -->
               <span class="link-block">
                 <a href=""
@@ -461,7 +467,7 @@
               Scene
             </div>
             <div class="buttons is-vertical">
-              <button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
+              <!--<button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
               <button id="scene-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-bicycle')">Bicycle <br> (Mip-NeRF 360)</button>
               <button id="scene-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump <br> (Mip-NeRF 360)</button>
               <button id="scene-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-drjohnson')">Dr. Johnson <br> (Deep Blending)</button>
@@ -674,12 +680,15 @@
             <div class="buttons is-vertical">
               <!--<button id="scene-decomp-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
               <button id="scene-decomp-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-bicycle')">Bicycle <br> (Mip-NeRF 360)</button>
-              <!--<button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>-->
+              <button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
               <button id="scene-decomp-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-drjohnson')">Dr. Johnson <br> (Deep Blending)</button>
               <button id="scene-decomp-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-train')">Train <br> (Tanks and Temples)</button>
-              <!--<button id="scene-decomp-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-truck')">Truck (Tanks and Temples)</button>-->
-              <!--<button id="scene-decomp-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-flower_gallery')">Flower Gallery (Custom)</button>-->
-              <!--<button id="scene-decomp-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-children_art')">Children Art (Custom)</button>-->
+              <button id="scene-decomp-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-truck')">Truck (Tanks and Temples)</button>
+              <button id="scene-decomp-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-flower_gallery')">Flower Gallery (Custom)</button>
+              <button id="scene-decomp-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-children_art')">Children Art (Custom)</button>
+              <button id="scene-decomp-button-blender-chair" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-chair')">Chair <br> (Blender)</button>
+              <button id="scene-decomp-button-blender-lego" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-lego')">Lego <br> (Blender)</button>
+              <button id="scene-decomp-button-blender-ship" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-ship')">Ship <br> (Blender)</button>
             </div>
           </div>
           <div class="column is-4">
