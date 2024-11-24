@@ -27,28 +27,8 @@ $(document).ready(function() {
 			autoplaySpeed: 3000,
     }
 
-		// Initialize all div with carousel class
-    var carousels = bulmaCarousel.attach('.carousel', options);
-
-    // Loop on each carousel initialized
-    for(var i = 0; i < carousels.length; i++) {
-    	// Add listener to  event
-    	carousels[i].on('before:show', state => {
-    		console.log(state);
-    	});
-    }
-
-    // Access to bulmaCarousel instance of an element
-    var element = document.querySelector('#my-element');
-    if (element && element.bulmaCarousel) {
-    	// bulmaCarousel instance is available as element.bulmaCarousel
-    	element.bulmaCarousel.on('before-show', function(state) {
-    		console.log(state);
-    	});
-    }
-    bulmaSlider.attach();
-
     // carousel for the video
+    let carousel_div = document.getElementById("results-carousel");
     var video_id_list = [
       "mipnerf360_bicycle",
       "mipnerf360_stump",
@@ -77,6 +57,25 @@ $(document).ready(function() {
         });
     }
 
+		// Initialize all div with carousel class
+    var carousels = bulmaCarousel.attach('.carousel', options);
+    // Loop on each carousel initialized
+    for(var i = 0; i < carousels.length; i++) {
+    	carousels[i].on('before:show', state => {
+    		console.log("before show", state.index);
+    	});
+    }
+
+
+    // Access to bulmaCarousel instance of an element
+    var element = document.querySelector('#my-element');
+    if (element && element.bulmaCarousel) {
+    	// bulmaCarousel instance is available as element.bulmaCarousel
+    	element.bulmaCarousel.on('before-show', function(state) {
+    		console.log(state);
+    	});
+    }
+    bulmaSlider.attach();
 
     // teaser
     const videoContainer = document.querySelector(".teaser-video-container");

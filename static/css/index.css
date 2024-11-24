@@ -79,15 +79,19 @@
 
 
 .buttons {
-  display: flex;
+  overflow-y: scroll;
+  display: block;
   flex-direction: column;
+  height: 40vh;
 }
+
 .button {
   white-space: normal; /* allow multiline text */
   height: auto; /* adjust height to fit content */
   padding: 0.5rem 1rem; /* adjust padding to maintain spacing */
   border-width: 1px; /* adjust border width */
 }
+
 
 .button.is-active {
   background-color: #3273dc;
@@ -217,19 +221,21 @@ body {
 
 .results-carousel {
   overflow: hidden;
+  height: auto;
 }
 
 .results-carousel .item {
   margin: 5px;
   overflow: hidden;
-  border: 1px solid #bbb;
   border-radius: 10px;
   padding: 0;
   font-size: 0;
+  height: 100%;
 }
 
 .results-carousel video {
   margin: 0;
+  height: 100%;
 }
 
 
