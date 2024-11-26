@@ -30,10 +30,12 @@
 
 <section class="hero">
   <div class="hero-body">
-    <div class="container is-max-desktop">
+    <div class="container is-full-width">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">Textured Gaussians for Enhanced 3D Scene Appearance Modeling</h1>
+          <h1 class="title is-1 publication-title">
+            <span style="font-weight: 900;">Textured Gaussians</span><br><span style="font-weight: 100;">for Enhanced 3D Scene Appearance Modeling</span>
+          </h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://bchao1.github.io/">Brian Chao</a><sup>1,2</sup>
@@ -56,6 +58,7 @@
             <span class="author-block">
               <a href="https://scholar.google.com/citations?user=bluhHm8AAAAJ&hl=en">Ayush Saraf</a><sup>2</sup>
             </span>
+            <br>
             <span class="author-block">
               <a href="https://jbhuang0604.github.io/">Jia-Bin Huang</a><sup>2,3</sup>
             </span>
@@ -71,14 +74,14 @@
           </div>
 
           <div class="is-size-5 publication-authors">
-            <span class="author-block"><sup>1</sup>Stanford University,</span>
-            <span class="author-block"><sup>2</sup>Meta Reality Labs</span>
-            <span class="author-block"><sup>3</sup>University of Maryland, College Park</span>
+            <span class="author-block"><sup>1</sup>Stanford University</span>
+            <span class="author-block"><sup>2</sup>Meta</span>
+            <span class="author-block"><sup>3</sup>University of Maryland</span>
           </div>
 
           <div class="column has-text-centered">
             <div class="publication-links">
-              <!-- PDF Link. -->
+              <!--
               <span class="link-block">
                 <a href="static/files/textured_gaussians_main.pdf"
                    class="external-link button is-normal is-rounded is-dark">
@@ -88,6 +91,7 @@
                   <span>Paper</span>
                 </a>
               </span>
+            -->
               <span class="link-block">
                 <a href=""
                    class="external-link button is-normal is-rounded is-dark">
@@ -117,6 +121,7 @@
                   <span>Code (Coming Soon)</span>
                   </a>
               </span>
+              <!--
               <span class="link-block">
                 <a href="https://drive.google.com/drive/folders/1nVLfN3Dcbi45MVE5nrL_dluasZCpQ3GY?usp=sharing"
                    class="external-link button is-normal is-rounded is-dark">
@@ -126,6 +131,7 @@
                   <span>Paper & Supplementary Materials </span>
                 </a>
               </span>
+            -->
 
             </div>
 
@@ -142,13 +148,13 @@
       <div class="teaser-video-container">
         <div class="teaser-video-wrapper" id="teaser-video1-wrapper">
           <video id="teaser-video1" preload="auto" autoplay loop muted>
-            <source src="static/videos/main/custom-children_art_3DGS_1.mp4" type="video/mp4">
+            <source src="static/videos/supp/custom-children_art_3DGS_1.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
         <div class="teaser-video-wrapper" id="teaser-video2-wrapper">
           <video id="teaser-video2" preload="auto" autoplay loop muted>
-            <source src="static/videos/main/custom-children_art_Ours_1.mp4" type="video/mp4">
+            <source src="static/videos/supp/custom-children_art_Ours_1.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -251,7 +257,7 @@
           </video>
         </div>
       </div>
-    <div class="column is-full-width">
+    <div id="carousel-label" class="column is-full-width">
       <div class="columns is-multiline">
         <div class="column has-text-centered is-half">
           <h2 class="title is-5">3DGS</h2>
@@ -297,52 +303,56 @@
       </div>
     </div>
     <!--/ Abstract. -->
-
-    <!-- Model Pipeline. -->
-    <div class="columns is-centered has-text-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Overview</h2>
-        <div class="content has-text-centered">
-          <img src="./static/images/rgba_textures.svg" style="width: 50%;">
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            Textured Gaussians encapsulate four kinds of color and opacity spatial variations.
-    The top row of the figure shows the texture map associated with each Gaussian, and the bottom row shows the rendered Textured Gaussians.
-    The constant-color and constant-alpha model (no textures) corresponds to the origianl 3DGS formation, which can only represent a single color up to a Gaussian falloff factor within the Gaussian extent.
-    <b>Textured Gaussians can already model spatially varying colors using only alpha textures since each pixel can be alpha-composited differently.</b>
-    The model achieves maximum expressivity when leveraging the full RGBA texture map, where each Gaussian is capable of representing complex shapes and high frequency textures.
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <img src="./static/images/model_pipeline.svg" style="width: 100%;">
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            Our method consists of three major components: <b>ray-Gaussian intersection, RGBA texture mapping, and a generalized Gaussian appearance model</b>.
-            To render the color of a pixel, we
-            <ol>
-              <li>Trace a ray from the camera center to the pixel to intersect with 3D Gaussians in the scene.</li>
-              <li>Query texture and alpha values from the per-Gaussian RGBA texture maps using the ray-Gaussian intersection point.</li>
-              <li>Given the retrieved spatially varying color and alpha values, we alpha-composite the color and alpha values of Gaussians that
-                are hit by the pixel ray using the generalized Gaussian appearance model.</li>
-            </ol>
-          </p>
-        </div>
-        <div class="content has-text-centered">
-          <img src="./static/images/num_gaussians_ablation.svg" style="width: 75%;">
-        </div>
-        <div class="content has-text-justified">
-          <p>
-            Through texturing Gaussians, our model achieves strictly better novel-view synthesis (NVS) quality compared to 3DGS when using the same number of Gaussians.
-            Here, we show NVS performance in terms of PSNR / SSIM /  LPIPS for our RGBA Textured Gaussians models and 3DGS models with the same number of Gaussians.
-            Our models consistently achieves better NVS performance.
-          </p>
-        </div>
-      </div>
-    </div>
-    <!--/ Model Pipeline -->
   </div>
+</section>
+
+<section class="section fullwidth-gray-bg">
+  <div class="container is-max-desktop">
+<!-- Model Pipeline. -->
+<div class="columns is-centered has-text-centered">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Overview</h2>
+    <div class="content has-text-centered">
+      <img src="./static/images/rgba_textures.svg" style="width: 50%;">
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        Textured Gaussians encapsulate four kinds of color and opacity spatial variations.
+The top row of the figure shows the texture map associated with each Gaussian, and the bottom row shows the rendered Textured Gaussians.
+The constant-color and constant-alpha model (no textures) corresponds to the origianl 3DGS formation, which can only represent a single color up to a Gaussian falloff factor within the Gaussian extent.
+<b>Textured Gaussians can already model spatially varying colors using only alpha textures since each pixel can be alpha-composited differently.</b>
+The model achieves maximum expressivity when leveraging the full RGBA texture map, where each Gaussian is capable of representing complex shapes and high frequency textures.
+      </p>
+    </div>
+    <div class="content has-text-centered">
+      <img src="./static/images/model_pipeline.svg" style="width: 100%;">
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        Our method consists of three major components: <b>ray-Gaussian intersection, RGBA texture mapping, and a generalized Gaussian appearance model</b>.
+        To render the color of a pixel, we
+        <ol>
+          <li>Trace a ray from the camera center to the pixel to intersect with 3D Gaussians in the scene.</li>
+          <li>Query texture and alpha values from the per-Gaussian RGBA texture maps using the ray-Gaussian intersection point.</li>
+          <li>Given the retrieved spatially varying color and alpha values, we alpha-composite the color and alpha values of Gaussians that
+            are hit by the pixel ray using the generalized Gaussian appearance model.</li>
+        </ol>
+      </p>
+    </div>
+    <div class="content has-text-centered">
+      <img src="./static/images/num_gaussians_ablation.svg" style="width: 75%;">
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        Through texturing Gaussians, our model achieves strictly better novel-view synthesis (NVS) quality compared to 3DGS when using the same number of Gaussians.
+        Here, we show NVS performance in terms of PSNR / SSIM /  LPIPS for our RGBA Textured Gaussians models and 3DGS models with the same number of Gaussians.
+        Our models consistently achieves better NVS performance.
+      </p>
+    </div>
+  </div>
+</div>
+<!--/ Model Pipeline -->
+</div>
 </section>
 
 
@@ -351,66 +361,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title"><i style="font-weight: normal;">Supplementary Materials</i></h1>
-          <!--
-          <div class="is-size-5 publication-authors">
-            <span class="author-block"></span>
-          </div>
-
-          <div class="column has-text-centered">
-            <div class="publication-links">
-
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Paper</span>
-                </a>
-              </span>
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="ai ai-arxiv"></i>
-                  </span>
-                  <span>arXiv</span>
-                </a>
-              </span>
-
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-file-pdf"></i>
-                  </span>
-                  <span>Supplementary Materials</span>
-                </a>
-              </span>
-
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-
-              <span class="link-block">
-                <a href=""
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code (Coming Soon)</span>
-                  </a>
-              </span>
-            </div>
-          </div>
-        -->
+          <h1 class="title is-1 publication-title">Additional Results</h1>
         </div>
       </div>
     </div>
@@ -446,331 +397,201 @@
       </div>
     </div>
     <!--/ Table of Contents -->
-
-  <!-- Novel View Synthesis Results with Varying Numbers of Gaussians -->
-<div class="columns is-centered">
-  <div class="column is-full-width">
-    <h2 id="vary-gaussians-fixed-texels" class="title is-3">NVS Results with Varying Numbers of Gaussians and Fixed Amount of Texels</h2>
-    <div class="content has-text-justified">
-      <p>
-        We optimize 3DGS and our RGBA Textured Gaussians models with varying numbers of Gaussians, ranging from 1% of
-        the default optimized number to 100% of the default optimized number of Gaussians. <b>We allocate a fixed amount of
-        texels to each model. Hence, the texture map resolution of models with more Gaussians will be smaller.</b>
-      </p>
-      <p>
-        When toggling between <b>3DGS</b> and <b>Ours</b> while using the same number of Gaussians,
-        our method clearly reconstructs sharper details and is
-        most evident with fewer Gaussians. When varying the number of Gaussians using the slider, we see that recontruction performance improves as the number of
-        Gaussians increase, as expected.
-      </p>
-      <p>Please hover over the video and click on the controls to pause / play the sync videos and toggle between different scenes and models.
-        Scroll through the scrollbar in the <b>Scene</b> column to go through all scenes.
-      </p>
-    </div>
-    <div class="columns is-vcentered">
-      <div class="column is-4" style="margin-right: 2rem;">
-        <div class="control is-fullwidth">
-          <div class="is-fullwidth has-text-centered" id="slider-value">Percentage of Gaussians: 1%</div>
-          <input type="range" id="slider" min="1" max="7" value="1" step="1" onchange="updateColorVarySlider()" class="slider is-fullwidth is-large is-info">
-        </div>
-        <div class="columns is-multiline">
-          <div class="column is-half">
-            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
-              Scene
-            </div>
-            <div class="buttons is-vertical">
-              <!--<button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
-              <button id="scene-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-bicycle')">Bicycle <br> (Mip-NeRF 360)</button>
-              <button id="scene-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump <br> (Mip-NeRF 360)</button>
-              <button id="scene-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-drjohnson')">Dr. Johnson <br> (Deep Blending)</button>
-              <button id="scene-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-train')">Train <br>  (Tanks and Temples)</button>
-              <button id="scene-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-truck')">Truck <br>  (Tanks and Temples)</button>
-              <button id="scene-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectScene('custom-flower_gallery')">Flower Gallery <br> (Custom)</button>
-              <button id="scene-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectScene('custom-children_art')">Children Art <br> (Custom)</button>
-              <button id="scene-button-blender-chair" class="button is-outlined is-fullwidth" onclick="selectScene('blender-chair')">Chair <br> (Blender)</button>
-              <button id="scene-button-blender-lego" class="button is-outlined is-fullwidth" onclick="selectScene('blender-lego')">Lego <br> (Blender)</button>
-              <button id="scene-button-blender-ship" class="button is-outlined is-fullwidth" onclick="selectScene('blender-ship')">Ship <br> (Blender)</button>
-            </div>
-          </div>
-          <div class="column is-half">
-            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
-              Model Type
-            </div>
-            <div class="buttons is-vertical">
-              <button id="model-button-3dgs" class="button is-outlined is-fullwidth is-active" onclick="selectModel('3DGS')">3DGS</button>
-              <button id="model-button-ours" class="button is-outlined is-fullwidth" onclick="selectModel('Ours')">Ours</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div class="column is-8">
-        <video controls muted loop playsinline autoplay preload="auto" id="video-vary-gaussians">
-          <!--<source id="video-source-vary-gaussians" src="static/videos/num_gs/mipnerf360-kitchen_3DGS_1.mp4" type="video/mp4">-->
-          <source id="video-source-vary-gaussians" src="static/videos/supp/mipnerf360-bicycle_3DGS_1.mp4" type="video/mp4">
-        </video>
-        <div id="video-name-vary-gaussians"></div>
-      </div>
-    </div>
   </div>
-</div>
-<!--/ Novel View Synthesis Results with Varying Numbers of Gaussians -->
-
-
-<!--
-  <div class="columns is-centered">
-    <div class="column is-full-width">
-      <h2 id="vary-num-gs-fix-tex-res" class="title is-3">NVS Results with Varying Numbers of Gaussians and Fixed Texture Map Resolution</h2>
-      <div class="content has-text-justified">
-        <p>
-
-        </p>
-      </div>
-      <div class="columns is-vcentered">
-        <div class="column is-half" style="margin-right: 2rem;">
-          <div class="columns is-multiline">
-            <div class="column is-half">
-              <div class="is-fullwidth has-text-centered">
-                Scene
-              </div>
-              <div class="buttons is-vertical">
-                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectVaryNumGSFixTexResScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
-                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectVaryNumGSFixTexResScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
-                <button id="scene-vary-num-gs-fix-tex-res-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectVaryNumGSFixTexResScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
-                <button id="scene-vary-num-gs-fix-tex-res-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectVaryNumGSFixTexResScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
-                <button id="scene-vary-num-gs-fix-tex-res-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectVaryNumGSFixTexResScene('custom-children_art')">Children Art (Custom)</button>
-              </div>
-            </div>
-          </div>
-          <div class="control is-fullwidth">
-            <input type="range" id="vary-num-gs-fix-tex-res-slider" min="1" max="7" value="1" step="1" onchange="updateVaryNumGSFixTexResVideo()" class="slider is-fullwidth is-large is-info">
-            <div class="is-fullwidth has-text-centered" id="vary-num-gs-fix-tex-res-slider-value">Percentage of Gaussians: 1%</div>
-          </div>
-        </div>
-
-        <div class="column is-half">
-          <video controls muted loop playsinline preload="auto" id="video-vary-num-gs-fix-tex-res" width="640" height="480">
-            <source id="video-source-vary-num-gs-fix-tex-res" src="static/videos/fix_tex_res_vary_num_gs/mipnerf360-kitchen_1.mp4" type="video/mp4">
-          </video>
-          <div id="video-name-vary-num-gs-fix-tex-res"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="columns is-centered">
-    <div class="column is-full-width">
-      <h2 id="vary-tex-res-fix-num-gs" class="title is-3">NVS Results with Varying Texture Map Resolution and Fixed Number of Gaussians</h2>
-      <div class="content has-text-justified">
-        <p>
-
-        </p>
-      </div>
-      <div class="columns is-vcentered">
-        <div class="column is-half" style="margin-right: 2rem;">
-          <div class="columns is-multiline">
-            <div class="column is-half">
-              <div class="is-fullwidth has-text-centered">
-                Scene
-              </div>
-              <div class="buttons is-vertical">
-                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectVaryTexResFixNumGSScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
-                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth" onclick="selectVaryTexResFixNumGSScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
-                <button id="scene-vary-tex-res-fix-num-gs-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectVaryTexResFixNumGSScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
-                <button id="scene-vary-tex-res-fix-num-gs-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectVaryTexResFixNumGSScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
-                <button id="scene-vary-tex-res-fix-num-gs-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectVaryTexResFixNumGSScene('custom-children_art')">Children Art (Custom)</button>
-              </div>
-            </div>
-          </div>
-          <div class="control is-fullwidth">
-            <input type="range" id="vary-tex-res-fix-num-gs-slider" min="1" max="6" value="1" step="1" onchange="updateVaryTexResFixNumGSVideo()" class="slider is-fullwidth is-large is-info">
-            <div class="is-fullwidth has-text-centered" id="vary-tex-res-fix-num-gs-slider-value">Texture Map Resolution: 2</div>
-          </div>
-        </div>
-
-        <div class="column is-half">
-          <video controls muted loop playsinline preload="auto" id="video-vary-tex-res-fix-num-gs" width="640" height="480">
-            <source id="video-source-vary-tex-res-fix-num-gs" src="static/videos/fix_num_gs_vary_tex_res/mipnerf360-kitchen_2.mp4" type="video/mp4">
-          </video>
-          <div id="video-name-vary-tex-res-fix-num-gs"></div>
-        </div>
-      </div>
-    </div>
-  </div>
--->
-
-<!-- Texture Map Ablations
-<div class="columns is-centered">
-  <div class="column is-full-width">
-    <h2 id="tex-ablation" class="title is-3">Texture Map Ablations</h2>
-    <div class="content has-text-justified">
-      <p>
-        We optimized our Textured Gaussians model using alpha (A), RGB, and RGBA texture maps with 1% of the default optimized
-        Gaussians to maximize the visual difference between different variants. We observe that the reconstruction quality is
-        already significantly improved compared to 3DGS when using alpha textures only. Using full RGBA textures achieves the
-        best results.
-      </p>
-      <p>
-        Interestingly, alpha textures achieves better results than RGB textures specifically in regions with detailed geometric
-        structures, such as the pipes in the lego truck. This is because Gaussians with RGB textures can still only represent
-        ellipsoidal shapes. On the other hand, alpha-textured Gaussians can represent complex shapes due to the spatially varying opacity.
-      </p>
-    </div>
-    <div class="columns is-vcentered">
-      <div class="column is-half" style="margin-right: 2rem;">
-        <div class="columns is-multiline">
-          <div class="column is-half">
-            <div class="is-fullwidth has-text-centered">
-              Scene
-            </div>
-            <div class="buttons is-vertical">
-              <button id="scene-tex-ablation-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>
-              <button id="scene-tex-ablation-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectTexAblationScene('mipnerf360-bicycle')">Bicycle (Mip-NeRF 360)</button>
-              <button id="scene-tex-ablation-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
-              <button id="scene-tex-ablation-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('tandt_db-drjohnson')">Dr. Johnson (Deep Blending)</button>
-              <button id="scene-tex-ablation-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('tandt_db-train')">Train (Tanks and Temples)</button>
-              <button id="scene-tex-ablation-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('tandt_db-truck')">Truck (Tanks and Temples)</button>
-              <button id="scene-tex-ablation-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('custom-flower_gallery')">Flower Gallery (Custom)</button>
-              <button id="scene-tex-ablation-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectTexAblationScene('custom-children_art')">Children Art (Custom)</button>
-            </div>
-          </div>
-          <div class="column is-half">
-            <div class="is-fullwidth has-text-centered">
-              Texture map variants
-            </div>
-            <div class="buttons is-vertical">
-              <button id="texture-button-none" class="button is-outlined is-fullwidth is-active" onclick="selectTexture('none')">None</button>
-              <button id="texture-button-alpha" class="button is-outlined is-fullwidth" onclick="selectTexture('alpha')">Alpha</button>
-              <button id="texture-button-rgb" class="button is-outlined is-fullwidth" onclick="selectTexture('rgb')">RGB</button>
-              <button id="texture-button-rgba" class="button is-outlined is-fullwidth" onclick="selectTexture('rgba')">RGBA</button>
-            </div>
-          </div>
-        </div>
-
-        </div>
-
-      <div class="column is-half">
-        <video controls muted loop playsinline autoplay preload="auto" id="video-tex-ablation" width="640" height="480">
-          <source id="video-source-tex-ablation" src="static/compressed_videos_small/mipnerf360-bicycle_none.mp4" type="video/mp4">
-        </video>
-        <div id="video-name-tex-ablation"></div>
-      </div>
-    </div>
-  </div>
-</div>
--->
-
-
-<!-- Color Decomposition Visualization -->
-<div class="columns is-centered">
-  <div class="column is-full-width">
-    <h2 id="tex-ablation-color-decomp" class="title is-3">Texture Map Ablations and Color Component Decomposition Visualizations</h2>
-    <div class="content has-text-justified">
-      <p>
-        We optimized our Textured Gaussians model with alpha (A), RGB, and RGBA texture maps with 1% of the default number of
-        optimized Gaussians, and visualize the <i>alpha modulated and composited</i> <b>base</b> and <b>texture</b> color components, and the
-        final rendered color (labelled <b>base + texture</b>). We also show 3DGS optimized with the same number of Gaussians as comparison.
-      </p>
-      <p>
-        With alpha textures, we see from results of the alpha-only and RGBA textures model that high-frequency
-        details can already be recosntructed well with the base color component due to spatially varying alpha modulation and composition.
-        With RGB textures, the base color component can only reconstruct low-frequency color variations while the texture
-        map color components reconstructs the "residual" details.
-      </p>
-      <p>Please hover over the video and click on the controls to pause / play the sync videos and toggle between different scenes and models.
-        Scroll through the scrollbar in the <b>Scene</b> column to go through all scenes.
-      </p>
-    </div>
-    <div class="content has-text-centered">
-      <img src="./static/images/color_contribution_table.svg" style="width: 100%;"/>
-    </div>
-    <div class="columns is-vcentered">
-      <div class="column is-4" style="margin-right: 2rem;">
-        <div class="columns is-multiline">
-          <div class="column is-5">
-            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
-              Scene <br> <span style="color: white;">0</span>
-            </div>
-            <div class="buttons is-vertical">
-              <!--<button id="scene-decomp-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
-              <button id="scene-decomp-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-bicycle')">Bicycle <br> (Mip-NeRF 360)</button>
-              <button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
-              <button id="scene-decomp-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-drjohnson')">Dr. Johnson <br> (Deep Blending)</button>
-              <button id="scene-decomp-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-train')">Train <br> (Tanks and Temples)</button>
-              <button id="scene-decomp-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-truck')">Truck (Tanks and Temples)</button>
-              <button id="scene-decomp-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-flower_gallery')">Flower Gallery (Custom)</button>
-              <button id="scene-decomp-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-children_art')">Children Art (Custom)</button>
-              <button id="scene-decomp-button-blender-chair" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-chair')">Chair <br> (Blender)</button>
-              <button id="scene-decomp-button-blender-lego" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-lego')">Lego <br> (Blender)</button>
-              <button id="scene-decomp-button-blender-ship" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-ship')">Ship <br> (Blender)</button>
-            </div>
-          </div>
-          <div class="column is-4">
-            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
-              Texture map variants
-            </div>
-            <div class="buttons is-vertical">
-              <button id="decomp-tex-button-none" class="button is-outlined is-fullwidth is-active" onclick="selectTexDecomp('none')">3DGS (no textures)</button>
-              <button id="decomp-tex-button-alpha" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('alpha')">Alpha</button>
-              <button id="decomp-tex-button-rgb" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgb')">RGB</button>
-              <button id="decomp-tex-button-rgba" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgba')">RGBA</button>
-            </div>
-          </div>
-          <div class="column is-3">
-            <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
-              Color Component
-            </div>
-            <div class="buttons is-vertical">
-              <button id="decomp-color-button-base" class="button is-outlined is-fullwidth is-active" onclick="selectColorDecomp('base')">Base</button>
-              <button id="decomp-color-button-tex" class="button is-outlined is-fullwidth" onclick="selectColorDecomp('tex')">Texture</button>
-              <button id="decomp-color-button-final" class="button is-outlined is-fullwidth" onclick="selectColorDecomp('final')">
-                <span>Base + Texture</span>
-              </button>
-            </div>
-          </div>
-        </div>
-
-        </div>
-
-      <div class="column is-8">
-        <video controls muted loop playsinline autoplay preload="auto" id="video-color-decomp">
-          <source id="video-source-color-decomp" src="static/videos/supp/mipnerf360-bicycle_none_base.mp4" type="video/mp4">
-        </video>
-        <div id="video-name-color-decomp"></div>
-      </div>
-    </div>
-
-  </div>
-</div>
-<!--/ Color Decomposition Visualization -->
-
 </section>
 
+<section class="section fullwidth-gray-bg">
+  <div class="container">
+    <!-- Novel View Synthesis Results with Varying Numbers of Gaussians -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 id="vary-gaussians-fixed-texels" class="title is-3">NVS Results with Varying Numbers of Gaussians and Fixed Amount of Texels</h2>
+        <div class="content has-text-justified">
+          <p>
+            We optimize 3DGS and our RGBA Textured Gaussians models with varying numbers of Gaussians, ranging from 1% of
+            the default optimized number to 100% of the default optimized number of Gaussians. <b>We allocate a fixed amount of
+            texels to each model. Hence, the texture map resolution of models with more Gaussians will be smaller.</b>
+          </p>
+          <p>
+            When toggling between <b>3DGS</b> and <b>Ours</b> while using the same number of Gaussians,
+            our method clearly reconstructs sharper details and is
+            most evident with fewer Gaussians. When varying the number of Gaussians using the slider, we see that recontruction performance improves as the number of
+            Gaussians increase, as expected.
+          </p>
+          <p>Please hover over the video and click on the controls to pause / play the sync videos and toggle between different scenes and models.
+            Scroll through the scrollbar in the <b>Scene</b> column to go through all scenes.
+          </p>
+        </div>
+        <div class="columns is-vcentered">
+          <div class="column is-4" style="margin-right: 2rem;">
+            <div class="control is-fullwidth">
+              <div class="is-fullwidth has-text-centered" id="slider-value">Percentage of Gaussians: 1%</div>
+              <input type="range" id="slider" min="1" max="7" value="1" step="1" onchange="updateColorVarySlider()" class="slider is-fullwidth is-large is-info">
+            </div>
+            <div class="columns is-multiline">
+              <div class="column is-half">
+                <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
+                  Scene
+                </div>
+                <div class="buttons is-vertical">
+                  <!--<button id="scene-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
+                  <button id="scene-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectScene('mipnerf360-bicycle')">Bicycle <br> (Mip-NeRF 360)</button>
+                  <button id="scene-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectScene('mipnerf360-stump')">Stump <br> (Mip-NeRF 360)</button>
+                  <button id="scene-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-drjohnson')">Dr. Johnson <br> (Deep Blending)</button>
+                  <button id="scene-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-train')">Train <br>  (Tanks and Temples)</button>
+                  <button id="scene-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectScene('tandt_db-truck')">Truck <br>  (Tanks and Temples)</button>
+                  <button id="scene-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectScene('custom-flower_gallery')">Flower Gallery <br> (Custom)</button>
+                  <button id="scene-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectScene('custom-children_art')">Children Art <br> (Custom)</button>
+                  <button id="scene-button-blender-chair" class="button is-outlined is-fullwidth" onclick="selectScene('blender-chair')">Chair <br> (Blender)</button>
+                  <button id="scene-button-blender-lego" class="button is-outlined is-fullwidth" onclick="selectScene('blender-lego')">Lego <br> (Blender)</button>
+                  <button id="scene-button-blender-ship" class="button is-outlined is-fullwidth" onclick="selectScene('blender-ship')">Ship <br> (Blender)</button>
+                </div>
+              </div>
+              <div class="column is-half">
+                <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
+                  Model Type
+                </div>
+                <div class="buttons is-vertical">
+                  <button id="model-button-3dgs" class="button is-outlined is-fullwidth is-active" onclick="selectModel('3DGS')">3DGS</button>
+                  <button id="model-button-ours" class="button is-outlined is-fullwidth" onclick="selectModel('Ours')">Ours</button>
+                </div>
+              </div>
+            </div>
+          </div>
 
+          <div class="column is-8">
+            <video controls muted loop playsinline autoplay preload="auto" id="video-vary-gaussians">
+              <!--<source id="video-source-vary-gaussians" src="static/videos/num_gs/mipnerf360-kitchen_3DGS_1.mp4" type="video/mp4">-->
+              <source id="video-source-vary-gaussians" src="static/videos/supp/mipnerf360-bicycle_3DGS_1.mp4" type="video/mp4">
+            </video>
+            <div id="video-name-vary-gaussians"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-<section class="section" id="BibTeX">
-  <div class="container is-max-desktop content">
-    <h2 class="title">BibTeX</h2>
-    <pre><code>@article{xxx2025texturedgaussians,
-  author    = {Anonymous},
-  title     = {Textured Gaussians for Enhanced 3D Scene Appearance Modeling},
-  journal   = {},
-  year      = {2025},
-}</code></pre>
+<section class="section">
+  <div class="container">
+    <!-- Color Decomposition Visualization -->
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 id="tex-ablation-color-decomp" class="title is-3">Texture Map Ablations and Color Component Decomposition Visualizations</h2>
+        <div class="content has-text-justified">
+          <p>
+            We optimized our Textured Gaussians model with alpha (A), RGB, and RGBA texture maps with 1% of the default number of
+            optimized Gaussians, and visualize the <i>alpha modulated and composited</i> <b>base</b> and <b>texture</b> color components, and the
+            final rendered color (labelled <b>base + texture</b>). We also show 3DGS optimized with the same number of Gaussians as comparison.
+          </p>
+          <p>
+            With alpha textures, we see from results of the alpha-only and RGBA textures model that high-frequency
+            details can already be recosntructed well with the base color component due to spatially varying alpha modulation and composition.
+            With RGB textures, the base color component can only reconstruct low-frequency color variations while the texture
+            map color components reconstructs the "residual" details.
+          </p>
+          <p>Please hover over the video and click on the controls to pause / play the sync videos and toggle between different scenes and models.
+            Scroll through the scrollbar in the <b>Scene</b> column to go through all scenes.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <img src="./static/images/color_contribution_table.svg" style="width: 100%;"/>
+        </div>
+        <div class="columns is-vcentered">
+          <div class="column is-4" style="margin-right: 2rem;">
+            <div class="columns is-multiline">
+              <div class="column is-5">
+                <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
+                  Scene <br> <span style="color: white;">0</span>
+                </div>
+                <div class="buttons is-vertical">
+                  <!--<button id="scene-decomp-button-mipnerf360-kitchen" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-kitchen')">Kitchen (Mip-NeRF 360)</button>-->
+                  <button id="scene-decomp-button-mipnerf360-bicycle" class="button is-outlined is-fullwidth is-active" onclick="selectSceneDecomp('mipnerf360-bicycle')">Bicycle <br> (Mip-NeRF 360)</button>
+                  <button id="scene-decomp-button-mipnerf360-stump" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('mipnerf360-stump')">Stump (Mip-NeRF 360)</button>
+                  <button id="scene-decomp-button-tandt_db-drjohnson" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-drjohnson')">Dr. Johnson <br> (Deep Blending)</button>
+                  <button id="scene-decomp-button-tandt_db-train" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-train')">Train <br> (Tanks and Temples)</button>
+                  <button id="scene-decomp-button-tandt_db-truck" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('tandt_db-truck')">Truck (Tanks and Temples)</button>
+                  <button id="scene-decomp-button-custom-flower_gallery" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-flower_gallery')">Flower Gallery (Custom)</button>
+                  <button id="scene-decomp-button-custom-children_art" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('custom-children_art')">Children Art (Custom)</button>
+                  <button id="scene-decomp-button-blender-chair" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-chair')">Chair <br> (Blender)</button>
+                  <button id="scene-decomp-button-blender-lego" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-lego')">Lego <br> (Blender)</button>
+                  <button id="scene-decomp-button-blender-ship" class="button is-outlined is-fullwidth" onclick="selectSceneDecomp('blender-ship')">Ship <br> (Blender)</button>
+                </div>
+              </div>
+              <div class="column is-4">
+                <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
+                  Texture map variants
+                </div>
+                <div class="buttons is-vertical">
+                  <button id="decomp-tex-button-none" class="button is-outlined is-fullwidth is-active" onclick="selectTexDecomp('none')">3DGS (no textures)</button>
+                  <button id="decomp-tex-button-alpha" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('alpha')">Alpha</button>
+                  <button id="decomp-tex-button-rgb" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgb')">RGB</button>
+                  <button id="decomp-tex-button-rgba" class="button is-outlined is-fullwidth" onclick="selectTexDecomp('rgba')">RGBA</button>
+                </div>
+              </div>
+              <div class="column is-3">
+                <div class="is-fullwidth has-text-centered" style="font-weight: bold;">
+                  Color Component
+                </div>
+                <div class="buttons is-vertical">
+                  <button id="decomp-color-button-base" class="button is-outlined is-fullwidth is-active" onclick="selectColorDecomp('base')">Base</button>
+                  <button id="decomp-color-button-tex" class="button is-outlined is-fullwidth" onclick="selectColorDecomp('tex')">Texture</button>
+                  <button id="decomp-color-button-final" class="button is-outlined is-fullwidth" onclick="selectColorDecomp('final')">
+                    <span>Base + Texture</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            </div>
+
+          <div class="column is-8">
+            <video controls muted loop playsinline autoplay preload="auto" id="video-color-decomp">
+              <source id="video-source-color-decomp" src="static/videos/supp/mipnerf360-bicycle_none_base.mp4" type="video/mp4">
+            </video>
+            <div id="video-name-color-decomp"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+    <!--/ Color Decomposition Visualization -->
   </div>
 </section>
 
 
 <footer class="footer">
   <div class="container">
+    <section class="section" id="BibTeX">
+      <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><code>@article{xxx2025texturedgaussians,
+      author    = {Anonymous},
+      title     = {Textured Gaussians for Enhanced 3D Scene Appearance Modeling},
+      journal   = {},
+      year      = {2025},
+    }</code></pre>
+      </div>
+    </section>
     <div class="content has-text-centered">
-      <a class="icon-link"
-         href="">
-        <i class="fas fa-file-pdf"></i>
-      </a>
-      <a class="icon-link" href="" class="external-link" disabled>
-        <i class="fab fa-github"></i>
-      </a>
+      <span class="link-block">
+        <a href=""
+           class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+              <i class="ai ai-arxiv"></i>
+          </span>
+          <span>arXiv</span>
+        </a>
+      </span>
+      <span class="link-block">
+        <a href=""
+           class="external-link button is-normal is-rounded is-dark">
+          <span class="icon">
+              <i class="fab fa-github"></i>
+          </span>
+          <span>Code (Coming Soon)</span>
+          </a>
+      </span>
     </div>
     <div class="columns is-centered">
       <div class="column is-8">

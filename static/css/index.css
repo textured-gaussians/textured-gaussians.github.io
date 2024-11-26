@@ -266,3 +266,8 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+
+.fullwidth-gray-bg {
+  background-color: #f5f5f5;
+}
