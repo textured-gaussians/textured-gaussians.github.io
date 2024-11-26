@@ -78,12 +78,6 @@
 }
 
 
-.buttons {
-  overflow-y: scroll;
-  display: block;
-  flex-direction: column;
-  height: 40vh;
-}
 
 .button {
   white-space: normal; /* allow multiline text */
