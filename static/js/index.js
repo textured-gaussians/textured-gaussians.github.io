@@ -187,6 +187,22 @@ document.addEventListener('DOMContentLoaded', function() {
   currentTimeColorDecomp = document.getElementById('video-color-decomp').currentTime;
 });
 
+
+// Select teaser scene
+let teaserScene = "children-art";
+function selectTeaserScene(scene) {
+  console.log("selecting scene: " + scene);
+  document.querySelectorAll('[id^="teaser-button"]').forEach(button => button.classList.remove('is-active-teaser'));
+  document.getElementById(`teaser-button-${scene}`).classList.add('is-active-teaser');
+  teaserScene = scene;
+  updateTeaserVideo();
+}
+
+function updateTeaserVideo() {
+  document.getElementById('teaser-video1').src = `static/videos/supp/${teaserScene}_3DGS_1.mp4`;
+  document.getElementById('teaser-video2').src = `static/videos/supp/${teaserScene}_Ours_1.mp4`;
+}
+
 // Varying number of Gaussians
 
 function selectScene(scene) {
