@@ -380,9 +380,25 @@ The model achieves maximum expressivity when leveraging the full RGBA texture ma
             <li><a href="https://lessvrong.com/cs/gstex/">GStex: Per-Primitive Texturing of 2D Gaussian Splatting for Decoupled Appearance and Geometry Modeling</a>
               <span>
                   <br>
-                  Gstex focused on texture editing of optimized Gaussian splats by augmenting each Gaussian with RGB texture maps.
+                  Gstex focused on texture editing of optimized Gaussian splating models by augmenting each Gaussian with RGB texture maps.
                   However, GStex did not model spatially varying opacity with alpha texture maps.
                   <br><br>
+              </span>
+            </li>
+            <li><a href="https://ruixu.me/html/SuperGaussians/index.html">SuperGaussians: Enhancing Gaussian Splatting Using Primitives with Spatially Varying Colors</a>
+              <span>
+                <br>
+                  Instead of texture maps, SuperGaussians used movable kernels and tiny MLPs to model spatially varying color.
+                  However, SuperGaussians did not model spatially varying opacity.
+                <br><br>
+              </span>
+            </li>
+            <li><a href="https://timsong412.github.io/HDGS-ProjPage/">HDGS: Textured 2D Gaussian Splatting for Enhanced Scene Rendering</a>
+              <span>
+                <br>
+                HDGS focused on anti-aliasing when rendering optimized Gaussian splatting models at arbitrary viewpoints and resolutions.
+                However, HDGS did not model spatially varying opacity with alpha texture maps.
+                <br><br>
               </span>
             </li>
             <li><a href="https://arxiv.org/abs/2411.08508">BillBoard Splatting (BBSplat): Learnable Textured Primitives for Novel View Synthesis</a>
@@ -392,23 +408,6 @@ The model achieves maximum expressivity when leveraging the full RGBA texture ma
                 <br><br>
             </span>
             </li>
-            <li><a href="https://ruixu.me/html/SuperGaussians/index.html">SuperGaussians: Enhancing Gaussian Splatting Using Primitives with Spatially Varying Colors</a>
-              <span>
-                <br>
-                  Instead of texture maps, SuperGaussians used movable kernels and tiny MLPs to model spatially varying color.
-                  However, SuperGaussians also did not model spatially varying opacity.
-                <br><br>
-              </span>
-            </li>
-            <li><a href="https://timsong412.github.io/HDGS-ProjPage/">HDGS: Textured 2D Gaussian Splatting for Enhanced Scene Rendering</a>
-              <span>
-                <br>
-                HDGS focused on anti-aliasing when rendering optimized Gaussian splatting models at arbitrary viewpoints and resolutions.
-                HDGS also did not model spatially varying opacity with alpha texture maps.
-                <br><br>
-              </span>
-            </li>
-
           </ul>
       </p>
     </div>
