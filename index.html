@@ -367,8 +367,59 @@ The model achieves maximum expressivity when leveraging the full RGBA texture ma
 </div>
 </section>
 
+<section class="section">
+  <div class="container is-max-desktop">
+<!-- Model Pipeline. -->
+<div class="columns is-centered has-text-centered">
+  <div class="column is-full-width">
+    <h2 class="title is-3">Concurrent Works</h2>
+    <div class="content has-text-justified">
+      <p>
+        There are multiple concurrent works that explore concepts similar to our paper. Here are some of them:
+          <ul>
+            <li><a href="https://lessvrong.com/cs/gstex/">GStex: Per-Primitive Texturing of 2D Gaussian Splatting for Decoupled Appearance and Geometry Modeling</a>
+              <span>
+                  <br>
+                  Gstex focused on texture editing of optimized Gaussian splats by augmenting each Gaussian with RGB texture maps.
+                  However, GStex did not model spatially varying opacity with alpha texture maps.
+                  <br><br>
+              </span>
+            </li>
+            <li><a href="https://arxiv.org/abs/2411.08508">BillBoard Splatting (BBSplat): Learnable Textured Primitives for Novel View Synthesis</a>
+              <span>
+                <br>
+                  Similar to our method, BBsplat augmented each Gaussian with RGBA texture maps to model spatially varying color and opacity.
+                <br><br>
+            </span>
+            </li>
+            <li><a href="https://ruixu.me/html/SuperGaussians/index.html">SuperGaussians: Enhancing Gaussian Splatting Using Primitives with Spatially Varying Colors</a>
+              <span>
+                <br>
+                  Instead of texture maps, SuperGaussians used movable kernels and tiny MLPs to model spatially varying color.
+                  However, SuperGaussians also did not model spatially varying opacity.
+                <br><br>
+              </span>
+            </li>
+            <li><a href="https://timsong412.github.io/HDGS-ProjPage/">HDGS: Textured 2D Gaussian Splatting for Enhanced Scene Rendering</a>
+              <span>
+                <br>
+                HDGS focused on anti-aliasing when rendering optimized Gaussian splatting models at arbitrary viewpoints and resolutions.
+                HDGS also did not model spatially varying opacity with alpha texture maps.
+                <br><br>
+              </span>
+            </li>
 
-<section id="additional-results" class="hero">
+          </ul>
+      </p>
+    </div>
+    </div>
+  </div>
+</div>
+<!--/ Model Pipeline -->
+</div>
+</section>
+
+<section id="additional-results" class="hero fullwidth-gray-bg">
   <div class="hero-body">
     <div class="container is-max-desktop">
       <div class="columns is-centered">
@@ -381,7 +432,7 @@ The model achieves maximum expressivity when leveraging the full RGBA texture ma
 </section>
 
 
-<section class="section">
+<section class="section fullwidth-gray-bg">
   <div class="container">
     <!-- Table of Contents. -->
     <div class="columns is-centered">
@@ -412,7 +463,7 @@ The model achieves maximum expressivity when leveraging the full RGBA texture ma
   </div>
 </section>
 
-<section class="section fullwidth-gray-bg">
+<section class="section">
   <div class="container">
     <!-- Novel View Synthesis Results with Varying Numbers of Gaussians -->
     <div class="columns is-centered">
@@ -484,7 +535,7 @@ The model achieves maximum expressivity when leveraging the full RGBA texture ma
   </div>
 </section>
 
-<section class="section">
+<section class="section fullwidth-gray-bg">
   <div class="container">
     <!-- Color Decomposition Visualization -->
     <div class="columns is-centered">
@@ -572,7 +623,7 @@ The model achieves maximum expressivity when leveraging the full RGBA texture ma
 </section>
 
 
-<footer class="footer">
+<footer class="footer" style="background-color: white;">
   <div class="container">
     <section class="section" id="BibTeX">
       <div class="container is-max-desktop content">
