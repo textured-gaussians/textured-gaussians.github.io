@@ -1,14 +1,14 @@
-# Nerfies
+# Textured Gaussians for Enhanced 3D Appearance Modeling
 
-This is the repository that contains the source code for the **Textured Gaussians for Enhanced 3D Appearance Modeling** [website]().
+This is the repository that contains the source code for the **Textured Gaussians for Enhanced 3D Appearance Modeling** [website](textured-gaussians.github.io).
 
 If you find our paper useful for your work please cite:
 ```
-@article{xxx2024texturedgaussians,
-  author    = {},
-  title     = {Textured Gaussians for Enhanced 3D Scene Appearance Modeling},
-  journal   = {},
-  year      = {2025},
+@inproceedings{chao2025texturedgaussians,
+  title={Textured Gaussians for Enhanced 3D Scene Appearance Modeling},
+  author={Brian Chao and Hung-Yu Tseng and Lorenzo Porzi and Chen Gao and Tuotuo Li and Qinbo Li and Ayush Saraf and Jia-Bin Huang and Johannes Kopf and Gordon Wetzstein and Changil Kim},
+  year={2025},
+  booktitle={CVPR}
 }
 ```
 
